@@ -38,7 +38,7 @@ export default function NavBar() {
                   <img
                     className="h-8 w-auto"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    // src="../assets/images/real-estate-high-resolution-logo-transparent.png';"
+                    // src="src/assets/images/real-estate-high-resolution-logo-transparent"
                     alt="Your Company"
                   />
                 </div>
