@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 export default function NavBar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-green-950">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ export default function NavBar() {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button> */}
 
-                <button className="md:ml-4 bg-blue-500 text-white px-4 py-1.5 rounded">
+                <button className="md:ml-4 bg-green-600 text-white px-4 py-1.5 rounded">
                   REGISTER
                 </button>
 
