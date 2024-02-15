@@ -21,11 +21,12 @@ const Footer = () => {
               </a>
               <div class="max-w-2xl mt-4 text-justify">
                 <p class="text-gray-500 dark:text-gray-400 font-medium">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
+                  GreenLand is dedicated to providing the best real estate
+                  marketing solutions for land developers and investors. With
+                  our expertise and innovative approach, we help you showcase
+                  your land projects to the right audience. Contact us today to
+                  learn more about how we can assist you in achieving your real
+                  estate goals.
                 </p>
 
                 {/* Social media icons */}
@@ -201,7 +202,9 @@ const Footer = () => {
 
                 <div className="flex mb-6 items-center text-gray-500 dark:text-gray-400 font-medium">
                   <FaMapMarkerAlt className="mr-2 hover:text-white" />
-                  <span className="hover:underline">123 Main Street, Colombo 3</span>
+                  <span className="hover:underline">
+                    123 Main Street, Colombo 3
+                  </span>
                 </div>
 
                 <div className="flex mb-6 items-center text-gray-500 dark:text-gray-400 font-medium">
