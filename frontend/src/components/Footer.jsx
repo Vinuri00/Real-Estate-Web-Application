@@ -172,7 +172,15 @@ const Footer = () => {
                       href="https://github.com/themesberg/flowbite"
                       class="hover:underline "
                     >
-                      LANDS
+                      Lands
+                    </a>
+                  </li>
+                  <li class="mb-3">
+                    <a
+                      href="https://github.com/themesberg/flowbite"
+                      class="hover:underline "
+                    >
+                      Featured Property
                     </a>
                   </li>
                   <li class="mb-3">
@@ -180,7 +188,7 @@ const Footer = () => {
                       href="https://discord.gg/4eeurUVvTy"
                       class="hover:underline"
                     >
-                      BROKERS' GUIDE
+                      Brokers' Guide
                     </a>
                   </li>
                   <li class="mb-3">
@@ -188,7 +196,7 @@ const Footer = () => {
                       href="https://discord.gg/4eeurUVvTy"
                       class="hover:underline"
                     >
-                      LAWYERS' GUIDE
+                      Lawyers' GUIDE
                     </a>
                   </li>
                 </ul>
@@ -214,7 +222,7 @@ const Footer = () => {
 
                 <div className="flex mb-3 items-center text-gray-500 dark:text-gray-400 font-medium mt-2">
                   <FaEnvelope className="mr-2 hover:text-white" />
-                  <span className="hover:underline">example@gmail.com</span>
+                  <span className="hover:underline">greenLDs@gmail.com</span>
                 </div>
 
                 {/* <ul class="text-gray-500 dark:text-gray-400 font-medium">
