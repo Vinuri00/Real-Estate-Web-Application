@@ -1,8 +1,342 @@
+// const Register = () => {
+//   return (
+//     <>
+//       <div>This is the register page</div>
+//     </>
+//   );
+// };
+
+// export default Register;
+
+import React, { useState } from "react";
+import axios from "axios";
+
 const Register = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    phone: "",
+    address: "",
+    accountType: "accountType",
+    companyName: "",
+    licenseNumber: "",
+    yearsOfExperience: "",
+    areaOfExpertise: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/register", formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <>
-      <div>This is the register page</div>
-    </>
+    <div className="flex justify-center items-center h-screen">
+      <div className="bg-white p-8 rounded shadow-2xl w-1/2">
+        <h2 className="text-2xl font-bold text-center">
+          {/* top spacing -> mb-9 */}
+          Create an Account
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-0">
+          <div className="grid grid-cols-2 gap-4">
+            {/* Name */}
+            <div className="mb-5">
+              <label
+                htmlFor="username-success"
+                className="block mb-4 font-medium text-green-800"
+                // className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500"
+              >
+                Your Name
+              </label>
+              <input
+                type="text"
+                id="username-success"
+                className="bg-green-50 border border-green-500 text-black 
+              dark:text-black 
+              placeholder-green-700 
+              dark:placeholder-green-500 
+              focus:ring-green-500 focus:border-green-700 
+              dark:bg-green-100 
+              dark:border-green-500
+              text-sm rounded-lg block w-full p-2.5"
+                placeholder="Bonnie Green"
+              />
+
+              {/* <input
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+            placeholder="Full Name"
+            className="input"
+            required
+          /> */}
+            </div>
+
+            {/* Email */}
+            <div className="mb-5">
+              <label
+                htmlFor="username-success"
+                className="block mb-4 font-medium text-green-800"
+              >
+                Your Email
+              </label>
+
+              <input
+                type="password"
+                id="password-success"
+                className="bg-green-50 border border-green-500 text-black 
+              dark:text-black 
+              placeholder-green-700 
+              dark:placeholder-green-500
+              focus:ring-green-500 
+              focus:border-green-700 
+              dark:bg-green-100 
+              dark:border-green-500
+              text-sm rounded-lg block w-full p-2.5"
+                placeholder="Email Address"
+              />
+            </div>
+
+            {/* Password */}
+            <div className="mb-5">
+              <label
+                htmlFor="username-success"
+                className="block mb-4 font-medium text-green-800"
+              >
+                Your Password
+              </label>
+
+              <input
+                type="password"
+                id="password-success"
+                className="bg-green-50 border border-green-500 text-black 
+              dark:text-black 
+              placeholder-green-700 
+              dark:placeholder-green-500 
+              focus:ring-green-500 focus:border-green-700 
+              dark:bg-green-100 
+              dark:border-green-500
+              text-sm rounded-lg block w-full p-2.5"
+                placeholder="Enter a strong password"
+              />
+            </div>
+
+            {/* Phone Number */}
+            <div className="mb-5">
+              <label
+                htmlFor="phonenumber-success"
+                className="block mb-4 font-medium text-green-800"
+              >
+                Your Phone Number
+              </label>
+              <input
+                type="text"
+                id="phonenumber-success"
+                className="bg-green-50 border border-green-500 text-black 
+              dark:text-black 
+              placeholder-green-700 
+              dark:placeholder-green-500 
+              focus:ring-green-500 focus:border-green-700 
+              dark:bg-green-100 
+              dark:border-green-500
+              text-sm rounded-lg block w-full p-2.5"
+                placeholder="+94 711 234 567"
+              />
+            </div>
+
+            {/* Address */}
+            <div className="mb-5">
+              <label
+                htmlFor="address-success"
+                className="block mb-4 font-medium text-green-800"
+              >
+                Your Address
+              </label>
+
+              <input
+                type="address"
+                id="address-success"
+                className="bg-green-50 border border-green-500 text-black 
+              dark:text-black 
+              placeholder-green-700 
+              dark:placeholder-green-500
+              focus:ring-green-500 
+              focus:border-green-700 
+              dark:bg-green-100 
+              dark:border-green-500
+              text-sm rounded-lg block w-full p-2.5"
+                placeholder="Address"
+              />
+            </div>
+
+            {/* Account type */}
+            <div>
+              <label
+                htmlFor="accountType"
+                className="block mb-4 font-medium text-green-800"
+              >
+                Account Type
+              </label>
+
+              <select
+                name="accountType"
+                className="bg-green-50 border border-green-500 text-black 
+              dark:text-black 
+              placeholder-green-700 
+              dark:placeholder-green-500
+              focus:ring-green-500 
+              focus:border-green-700 
+              dark:bg-green-100 
+              dark:border-green-500
+              text-sm rounded-lg block w-full p-2.5"
+                value={formData.accountType}
+                onChange={handleChange}
+              >
+                <option value="accountType" className="">
+                  Select the account type that you need
+                </option>
+                <option value="investor">Investor</option>
+                <option value="seller">Seller</option>
+                <option value="lawyer">Lawyer</option>
+                <option value="broker">Broker</option>
+              </select>
+            </div>
+          </div>
+
+          {/* -----------------------Register details according to the account type ------------------------------------------------------------------------------------ */}
+
+          {formData.accountType === "lawyer" && (
+            <>
+              {/* Company Name */}
+              <div className="mb-5">
+                <label
+                  htmlFor="companyName"
+                  className="block mb-4 font-medium text-green-800"
+                >
+                  Your Company Name
+                </label>
+
+                <input
+                  type="companyName"
+                  id="companyName"
+                  className="bg-green-50 border border-green-500 text-black 
+                  dark:text-black 
+                  placeholder-green-700 
+                  dark:placeholder-green-500
+                  focus:ring-green-500 
+                  focus:border-green-700 
+                  dark:bg-green-100 
+                  dark:border-green-500
+                  text-sm rounded-lg block w-full p-2.5"
+                  placeholder="Company Name"
+                />
+              </div>
+
+              {/* License Number */}
+              <div className="mb-5">
+                <label
+                  htmlFor="licenseNumber"
+                  className="block mb-4 font-medium text-green-800"
+                >
+                  License Number
+                </label>
+
+                <input
+                  type="licenseNumber"
+                  id="licenseNumber"
+                  className="bg-green-50 border border-green-500 text-black 
+                  dark:text-black 
+                  placeholder-green-700 
+                  dark:placeholder-green-500
+                  focus:ring-green-500 
+                  focus:border-green-700 
+                  dark:bg-green-100 
+                  dark:border-green-500
+                  text-sm rounded-lg block w-full p-2.5"
+                  placeholder="License Number"
+                />
+              </div>
+
+              {/* Years of Experience */}
+              <div className="mb-5">
+                <label
+                  htmlFor="yearsOfExperience"
+                  className="block mb-4 font-medium text-green-800"
+                >
+                  Years of Experience
+                </label>
+
+                <input
+                  type="yearsOfExperience"
+                  id="yearsOfExperience"
+                  className="bg-green-50 border border-green-500 text-black 
+                  dark:text-black 
+                  placeholder-green-700 
+                  dark:placeholder-green-500
+                  focus:ring-green-500 
+                  focus:border-green-700 
+                  dark:bg-green-100 
+                  dark:border-green-500
+                  text-sm rounded-lg block w-full p-2.5"
+                  placeholder="Years of Experience"
+                />
+              </div>
+            </>
+          )}
+
+          {formData.accountType === "investor" && (
+            // Area Of Expertise
+            <div className="mb-5">
+              <label
+                htmlFor="areaOfExpertise"
+                className="block mb-4 font-medium text-green-800"
+              >
+                Area Of Expertise
+              </label>
+
+              <input
+                type="areaOfExpertise"
+                id="areaOfExpertise"
+                className="bg-green-50 border border-green-500 text-black 
+                  dark:text-black 
+                  placeholder-green-700 
+                  dark:placeholder-green-500
+                  focus:ring-green-500 
+                  focus:border-green-700 
+                  dark:bg-green-100 
+                  dark:border-green-500
+                  text-sm rounded-lg block w-full p-2.5"
+                placeholder="Area Of Expertise"
+              />
+            </div>
+          )}
+
+          {/* <button type="submit" className="btn">
+            Create Account
+          </button> */}
+
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="w-full md:w-2/3 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
+            >
+              Create Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

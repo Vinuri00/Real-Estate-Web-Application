@@ -1,6 +1,6 @@
 // Home.js
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Home = () => {
   const [showLawyers, setShowLawyers] = useState(false);

@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-no-undef */
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../../src/assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 const navigation = [
-  { name: "HOME", href: "/home", current: false },
+  { name: "HOME", href: "/", current: false },
   { name: "START INVESTING", href: "#", current: false },
   { name: "ADVERTISE", href: "#", current: false },
   { name: "PROCURE LAND", href: "#", current: false },
@@ -42,7 +44,7 @@ export default function NavBar() {
                     // src="src/assets/images/real-estate-high-resolution-logo-transparent"
                     alt="Your Company"
                   />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                     GreenLands
                   </span>
                 </div>
@@ -76,9 +78,20 @@ export default function NavBar() {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button> */}
 
-                <button className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded">
+                {/* <Button
+                  as={Link}
+                  to="/register"
+                  className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
+                >
                   REGISTER
-                </button>
+                </Button> */}
+
+                <Link 
+                  to="/register"
+                  className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
+                >
+                  REGISTER
+                </Link>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
