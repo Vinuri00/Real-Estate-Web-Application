@@ -1,15 +1,8 @@
-// const Register = () => {
-//   return (
-//     <>
-//       <div>This is the register page</div>
-//     </>
-//   );
-// };
-
-// export default Register;
-
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { validateRegister } from "../utils/RegisterVal";
+// import { useToast, immediateToast } from "izitoast-react";
+// import "izitoast-react/dist/iziToast.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -32,69 +25,7 @@ const Register = () => {
     const { name, value } = e.target;
     let errorMessage = "";
 
-    switch (name) {
-      case "fullName":
-        if (value.trim() === "") {
-          errorMessage = "Full Name is required!";
-        }
-        break;
-
-      case "email":
-        if (!/\S+@\S+.\S+/.test(value)) {
-          errorMessage = "Email is not valid!";
-        }
-        break;
-
-      case "password":
-        if (
-          value.length < 6 ||
-          !/[A-Z]/.test(value) ||
-          !/[!@#$%^&*]/.test(value)
-        ) {
-          errorMessage =
-            "Password must be at least 6 characters! include: \n Should include at least one capital letter! \n Should include at least one symbol!";
-        }
-        break;
-
-      case "phone":
-        if (!/^\+\d{1,3} \d{3} \d{3} \d{3}$/.test(value)) {
-          errorMessage = "Phone number is not valid";
-        }
-        break;
-
-      case "address":
-        if (value.trim() === "") {
-          errorMessage = "Address is required";
-        }
-        break;
-
-      case "companyName":
-        if (value.trim() === "") {
-          errorMessage = "Company Name is required";
-        }
-        break;
-
-      case "licenseNumber":
-        if (value.trim() === "") {
-          errorMessage = "License Number is required";
-        }
-        break;
-
-      case "yearsOfExperience":
-        if (value.trim() === "") {
-          errorMessage = "Years of Experience is required";
-        }
-        break;
-
-      case "areaOfExpertise":
-        if (value.trim() === "") {
-          errorMessage = "Area of Expertise is required";
-        }
-        break;
-
-      default:
-        break;
-    }
+    errorMessage = validateRegister(name, value);
 
     setErrors({ ...errors, [name]: errorMessage });
     setFormData({ ...formData, [name]: value });
@@ -139,6 +70,9 @@ const Register = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-0 mt-5">
+          {/* <div>
+            {errors}
+          </div> */}
           <div className="grid grid-cols-2 gap-4">
             {/* Name */}
             <div className="mb-5">
@@ -429,8 +363,7 @@ const Register = () => {
 
         {/* Login Link */}
         <div className="mt-4 text-center">
-          Already have an account?
-          &nbsp;
+          Already have an account? &nbsp;
           <a href="/login" className="text-green-600 hover:underline">
             Login here
           </a>
