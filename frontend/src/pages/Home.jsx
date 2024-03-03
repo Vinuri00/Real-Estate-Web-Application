@@ -1,6 +1,5 @@
-// Home.js
-
-import React, { useState } from "react";
+import { useState } from "react";
+import blocklandbg from "../assets/images/blocklandbg.webp";
 
 const Home = () => {
   const [showLawyers, setShowLawyers] = useState(false);
@@ -11,7 +10,7 @@ const Home = () => {
       <div className="relative bg-gray-800 h-screen">
         <img
           className="w-full h-full object-cover brightness-50"
-          src="/src/assets/images/blocklandbg.jpg"
+          src={blocklandbg}
           alt="Background"
           style={{ filter: "brightness(30%" }}
         />
