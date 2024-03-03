@@ -7,7 +7,7 @@ services:
     dockerfile: Dockerfile
    image: clinet-image
    ports:
-   - "5173:80"
+   - "5173:5173"
    networks:
    - mynetwork
 
