@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { validateRegister } from "../utils/RegisterVal";
+import { Link } from "react-router-dom";
 // import { useToast, immediateToast } from "izitoast-react";
 // import "izitoast-react/dist/iziToast.css";
 
@@ -364,9 +365,15 @@ const Register = () => {
         {/* Login Link */}
         <div className="mt-4 text-center">
           Already have an account? &nbsp;
-          <a href="/login" className="text-green-600 hover:underline">
+          <Link
+            to="/login"
+            className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
+          >
             Login here
-          </a>
+          </Link>
+          {/* <a href="/login" className="text-green-600 hover:underline">
+            Login here
+          </a> */}
         </div>
       </div>
     </div>
