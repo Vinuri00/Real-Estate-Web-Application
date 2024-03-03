@@ -1,5 +1,3 @@
-// Home.js
-
 import { useState } from "react";
 import blocklandbg from "../assets/images/blocklandbg.webp";
 
