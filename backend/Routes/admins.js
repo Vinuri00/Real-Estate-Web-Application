@@ -69,7 +69,7 @@ adminRouter.post("/login",validateAdminLogin, async (req, res) => {
     const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
       expiresIn: 3600,
     });
-g
+
     res.status(200).json({ token });
   } catch (error) {
     res.status(400).json({ message: error.message });
