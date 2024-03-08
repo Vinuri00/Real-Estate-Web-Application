@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { validateRegister } from "../utils/RegisterVal";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { useToast, immediateToast } from "izitoast-react";
 // import "izitoast-react/dist/iziToast.css";
 
@@ -64,7 +64,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center h-screen mt-16">
-      <div className="bg-white p-8 rounded shadow-2xl w-1/2">
+      <div className="bg-white p-8 rounded shadow-2xl w-2/3">
         <h2 className="text-2xl font-bold text-center">
           {/* top spacing -> mb-9 */}
           Create an Account
@@ -74,7 +74,7 @@ const Register = () => {
           {/* <div>
             {errors}
           </div> */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Name */}
             <div className="mb-5">
               <label
@@ -109,13 +109,13 @@ const Register = () => {
           /> */}
             </div>
 
-            {/* Email */}
+            {/* Username */}
             <div className="mb-5">
               <label
                 htmlFor="username-success"
                 className="block mb-4 font-medium text-green-800"
               >
-                Your Email
+                Add your Username
               </label>
 
               <input
@@ -130,22 +130,22 @@ const Register = () => {
               dark:bg-green-100 
               dark:border-green-500
               text-sm rounded-lg block w-full p-2.5"
-                placeholder="Email Address"
+                placeholder="Username"
               />
             </div>
 
-            {/* Password */}
+            {/* Email */}
             <div className="mb-5">
               <label
-                htmlFor="username-success"
+                htmlFor="email-success"
                 className="block mb-4 font-medium text-green-800"
               >
-                Your Password
+                Your Email
               </label>
 
               <input
-                type="password"
-                id="password-success"
+                type="email"
+                id="email-success"
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -154,7 +154,7 @@ const Register = () => {
               dark:bg-green-100 
               dark:border-green-500
               text-sm rounded-lg block w-full p-2.5"
-                placeholder="Enter a strong password"
+                placeholder="Email Address"
               />
             </div>
 
@@ -181,13 +181,13 @@ const Register = () => {
               />
             </div>
 
-            {/* Address */}
+            {/* Password */}
             <div className="mb-5">
               <label
                 htmlFor="address-success"
                 className="block mb-4 font-medium text-green-800"
               >
-                Your Address
+                Your Password
               </label>
 
               <input
@@ -202,7 +202,7 @@ const Register = () => {
               dark:bg-green-100 
               dark:border-green-500
               text-sm rounded-lg block w-full p-2.5"
-                placeholder="Address"
+                placeholder="Enter your Password"
               />
             </div>
 
@@ -232,10 +232,11 @@ const Register = () => {
                 <option value="accountType" className="">
                   Select the account type that you need
                 </option>
-                <option value="investor">Investor</option>
-                <option value="seller">Seller</option>
+                {/* <option value="investor">Investor</option> */}
+                {/* <option value="seller">Seller</option> */}
+                <option value="user">User</option>
                 <option value="lawyer">Lawyer</option>
-                <option value="broker">Broker</option>
+                {/* <option value="broker">Broker</option> */}
               </select>
             </div>
           </div>
@@ -365,15 +366,15 @@ const Register = () => {
         {/* Login Link */}
         <div className="mt-4 text-center">
           Already have an account? &nbsp;
-          <Link
+          {/* <Link
             to="/login"
             className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
           >
             Login here
-          </Link>
-          {/* <a href="/login" className="text-green-600 hover:underline">
+          </Link> */}
+          <a href="/login" className="text-green-600 hover:underline">
             Login here
-          </a> */}
+          </a>
         </div>
       </div>
     </div>
