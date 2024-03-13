@@ -4,6 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import connection from "./Database/conn.js";
 import adminRouter from "./Routes/admins.js";
+import brokerRouter from "./Routes/brokers.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.use("/admins", adminRouter);
+app.use("/brokers", brokerRouter);
 
 app.listen(3000, async () => {
   await connection();
