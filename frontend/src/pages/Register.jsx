@@ -8,6 +8,7 @@ import { validateRegister } from "../utils/RegisterVal";
 const Register = () => {
   const [formData, setFormData] = useState({
     fullName: "",
+    username: "",
     email: "",
     password: "",
     phone: "",
@@ -78,15 +79,15 @@ const Register = () => {
             {/* Name */}
             <div className="mb-5">
               <label
-                htmlFor="username-success"
+                htmlFor="fullname"
                 className="block mb-4 font-medium text-green-800"
                 // className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500"
               >
-                Your Name
+                Your Full Name
               </label>
               <input
                 type="text"
-                id="username-success"
+                id="fullname"
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -112,15 +113,15 @@ const Register = () => {
             {/* Username */}
             <div className="mb-5">
               <label
-                htmlFor="username-success"
+                htmlFor="username"
                 className="block mb-4 font-medium text-green-800"
               >
                 Add your Username
               </label>
 
               <input
-                type="email"
-                id="emai-success"
+                type="username"
+                id="username"
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -137,7 +138,7 @@ const Register = () => {
             {/* Email */}
             <div className="mb-5">
               <label
-                htmlFor="email-success"
+                htmlFor="email"
                 className="block mb-4 font-medium text-green-800"
               >
                 Your Email
@@ -145,7 +146,7 @@ const Register = () => {
 
               <input
                 type="email"
-                id="email-success"
+                id="email"
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -161,14 +162,14 @@ const Register = () => {
             {/* Phone Number */}
             <div className="mb-5">
               <label
-                htmlFor="phonenumber-success"
+                htmlFor="phonenumber"
                 className="block mb-4 font-medium text-green-800"
               >
                 Your Phone Number
               </label>
               <input
                 type="text"
-                id="phonenumber-success"
+                id="phonenumber"
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -184,15 +185,15 @@ const Register = () => {
             {/* Password */}
             <div className="mb-5">
               <label
-                htmlFor="address-success"
+                htmlFor="password"
                 className="block mb-4 font-medium text-green-800"
               >
                 Your Password
               </label>
 
               <input
-                type="address"
-                id="address-success"
+                type="password"
+                id="password"
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
