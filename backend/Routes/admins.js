@@ -3,7 +3,10 @@ import connection from "../Database/conn.js";
 import express from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { validateAdminLogin, validateAdminRegister } from "../Middlewares/adminValidation.js";
+import {
+  validateAdminLogin,
+  validateAdminRegister,
+} from "../Middlewares/adminValidation.js";
 
 dotenv.config();
 
@@ -34,9 +37,13 @@ adminRouter.post("/register", validateAdminRegister, async (req, res) => {
     }
 
     // Generate a token for the admin when they register
-    const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: 3600,
-    });
+    const token = jwt.sign(
+      { adminId: admin._id, adminName: admin.fullName },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: 3600,
+      }
+    );
 
     res.status(201).json({ token });
   } catch (error) {
@@ -44,10 +51,9 @@ adminRouter.post("/register", validateAdminRegister, async (req, res) => {
   }
 });
 
-
 // Validate Admin
 
-adminRouter.post("/login",validateAdminLogin, async (req, res) => {
+adminRouter.post("/login", validateAdminLogin, async (req, res) => {
   const { username, password } = req.body;
 
   await connection();
@@ -66,9 +72,13 @@ adminRouter.post("/login",validateAdminLogin, async (req, res) => {
     }
 
     // Generate a token for the admin when they login
-    const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: 3600,
-    });
+    const token = jwt.sign(
+      { adminId: admin._id, adminName: admin.fullName },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: 3600,
+      }
+    );
 
     res.status(200).json({ token });
   } catch (error) {
