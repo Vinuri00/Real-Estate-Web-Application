@@ -10,7 +10,7 @@ export const validateBrokerAdd = (req, res, next) => {
   }
 
   if (!fullName) {
-    return res.status(400).json({ message: "Please enter Full Name" });
+    return res.status(400).json({ message: "Please enter Broker Name" });
   }
 
   if (!email) {

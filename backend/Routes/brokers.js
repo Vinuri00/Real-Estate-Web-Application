@@ -3,6 +3,7 @@ import Broker from "../Models/broker.js";
 import express from "express";
 import dotenv from "dotenv";
 import { validateBrokerAdd } from "../Middlewares/brokerValidation.js";
+import mongoose from "mongoose";
 
 dotenv.config();
 
@@ -62,7 +63,7 @@ brokerRouter.get("/get-one/:id", async (req, res) => {
     if (!broker) {
       return res.status(400).json({ message: "Broker not found" });
     }
-    res.status(200).json({ message: "Broker not found" });
+    res.status(200).json(broker);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -70,9 +71,10 @@ brokerRouter.get("/get-one/:id", async (req, res) => {
 
 // Update broker
 
-brokerRouter.put("/update/id", async (req, res) => {
+
+brokerRouter.put("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const { fullName, emai, contactNumber, address, city } = req.body;
+  const { fullName, email, contactNumber, address, city } = req.body;
 
   await connection();
 
@@ -86,8 +88,6 @@ brokerRouter.put("/update/id", async (req, res) => {
         address,
         city,
       },
-
-      { new: true }
     );
 
     if (!broker) {
@@ -101,7 +101,7 @@ brokerRouter.put("/update/id", async (req, res) => {
 
 // Delete broker
 
-brokerRouter.delete("/delete/:id", async (res, req) => {
+brokerRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
 
   await connection();
