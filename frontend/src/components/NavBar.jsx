@@ -9,7 +9,7 @@ const navigation = [
   { name: "HOME", href: "/", current: false },
   { name: "START INVESTING", href: "#", current: false },
   { name: "ADVERTISE", href: "#", current: false },
-  { name: "PROCURE LAND", href: "#", current: false },
+  { name: "HIRE BROKERS", href: "/broker", current: false },
   { name: "ABOUT", href: "#", current: false },
 ];
 
