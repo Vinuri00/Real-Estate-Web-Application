@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import connection from "./Database/conn.js";
 import adminRouter from "./Routes/admins.js";
 import brokerRouter from "./Routes/brokers.js";
+import lawyerRouter from "./Routes/lawyers.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 
 app.use("/admins", adminRouter);
 app.use("/brokers", brokerRouter);
+app.use("/lawyers", lawyerRouter);
 
 app.listen(3000, async () => {
   await connection();

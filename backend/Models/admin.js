@@ -26,7 +26,7 @@ const AdminSchema = new Schema({
   },
 });
 
-// Encrypt the password (register)
+// Encrypt the password (register). encryptAdminPassword is the function name
 AdminSchema.methods.encryptAdminPassword = (password) => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
@@ -41,7 +41,7 @@ AdminSchema.plugin(mongooseUniqueValidator, {
   message: "Username already exists. Duplicate key",
 });
 
-// OR
+// If the model Admins already exists, use it; else, create a new model Admins
 const Admin = models.Admins || model("Admins", AdminSchema);
 
 export default Admin;

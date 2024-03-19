@@ -55,7 +55,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                     </NavLink>
                   </li>
                 ))}
-                <li>
+                {/* <li>
                   <NavLink target="_blank" to={import.meta.env.VITE_CHAT_APP_URL}>
                     <Button
                       color={
@@ -70,7 +70,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       </Typography>
                     </Button>
                   </NavLink>
-                </li>
+                </li> */}
               </ul>
             ),
         )}
