@@ -33,17 +33,17 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-4 mt-5">
           <div className="mb-5">
             <label
-              htmlFor="email"
+              htmlFor="username"
               className="block mb-2 front-medium text-green-800"
             >
-              Email
+              Username
             </label>
 
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               className="bg-green-50 border 
                        border-green-500 
@@ -55,7 +55,7 @@ const Login = () => {
                        dark:bg-green-100
                        dark:border-green-500
                        text-sm rounded-lg block w-full p-2.5"
-              placeholder="Email Address"
+              placeholder="Username"
             />
           </div>
 
