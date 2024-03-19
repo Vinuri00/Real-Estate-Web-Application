@@ -16,7 +16,9 @@ const UpdateBroker = () => {
   const [Loading, setLoading] = useState(true);
   const [error, setError] = useState(null); */
 
-  // This BrokerModel contains the fullName, email, contactNumber, address, and city fields
+
+  // This is the broker data that will be updated
+  // This BrokerModel contains the default values for the broker data (fullName, email, contactNumber, address, city)
   const [brokerData, setBrokerData] = useState(BrokerModel);
 
   useEffect(() => {
@@ -88,7 +90,9 @@ const UpdateBroker = () => {
       <div className="relative mt-8 h-72 w-full overflow-hidden rounded-xl bg-[url('/img/background-image.png')] bg-cover bg-center">
         <div className='absolute inset-0 h-full w-full bg-gray-900/75'>
           <div className='flex h-full items-center justify-center'>
-            <p className='text-4xl font-bold text-white'>Update Brokers</p>
+            <p className='text-4xl font-bold text-white'>
+              Update Brokers
+            </p>
           </div>
         </div>
       </div>
@@ -203,4 +207,4 @@ const UpdateBroker = () => {
   );
 };
 
-export default UpdateBroker
+export default UpdateBroker;
