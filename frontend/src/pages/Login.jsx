@@ -14,16 +14,34 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post("/api/login", formData);
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //     setErrors({ message: "Invalid credentials"});
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/login", formData);
-      console.log(response.data);
+      const { userType } = response.data;
+      if (userType === "lawyer") {
+        // Redirect to lawyer dashboard
+        console.log("Login successful as lawyer");
+      } else {
+        // handle user login
+        console.log("Login successful as user");
+      }
     } catch (error) {
       console.error(error);
-      setErrors({ message: "Invalid credentials"});
+      setErrors({ message: "Invalid credentials" });
     }
-  };
+  }
 
   return (
     <div className="flex justify-center items-center h-screen -mt-5">
