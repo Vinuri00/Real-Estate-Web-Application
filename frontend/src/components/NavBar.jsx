@@ -88,7 +88,7 @@ export default function NavBar() {
 
                 <Link 
                   to="/register"
-                  className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
+                  className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded text-sm md:text-base"
                 >
                   REGISTER
                 </Link>
