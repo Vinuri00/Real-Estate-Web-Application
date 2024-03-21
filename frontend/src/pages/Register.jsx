@@ -64,14 +64,14 @@ const Register = () => {
   // --------------------------------------------------------------------------------------------------------------
 
   return (
-    <div className="flex justify-center items-center h-screen mt-16">
-      <div className="bg-white p-8 rounded shadow-2xl w-2/3">
-        <h2 className="text-2xl font-bold text-center">
+    <div className="flex justify-center items-center min-h-screen mt-16">
+      <div className="bg-white p-8 rounded shadow-2xl w-full md:w-2/3">
+        <h2 className="text-2xl font-bold text-center mb-5">
           {/* top spacing -> mb-9 */}
           Create an Account
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-0 mt-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* <div>
             {errors}
           </div> */}
