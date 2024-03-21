@@ -1,15 +1,40 @@
 version: "3"
 services:
- frontend-clinet:
-   container_name: clinet-container
+ client:
+   container_name: client-container
    build:
     context: ./frontend
     dockerfile: Dockerfile
-   image: clinet-image
+   image: vinuri00/real-estate-client:1.2.0
+   ports:
+   - "5000:5000"
+   networks:
+   - mynetwork
+
+ admin:
+   container_name: admin-container
+   build:
+    context: ./Admin
+    dockerfile: Dockerfile
+   image: vinuri00/real-estate-admin:1.2.0
    ports:
    - "5173:5173"
    networks:
    - mynetwork
+
+ server:
+  container_name: server-container
+  build:
+    context: ./backend
+    dockerfile: Dockerfile
+  image: vinuri00/real-estate-server:1.2.0
+  environment:
+        - MONGO_URI=mongodb+srv://vinuri:vinuri123@real-estate.gjterqs.mongodb.net/
+        - JWT_SECRET=f4f63f770f634650bed4785f3cbbee7366b4de0ce81cded4b648090e5a18dbef
+  ports:
+    - "3000:3000"
+  networks:
+    - mynetwork
 
 networks:
  mynetwork:
