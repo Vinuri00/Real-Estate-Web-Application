@@ -161,7 +161,7 @@ const Home = () => {
           <u> Featured Property </u>
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
           {/* Section Card 1 - Featured Property Service */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md">
             <img
@@ -216,20 +216,6 @@ const Home = () => {
                 Featured Property
               </h3>
               <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about Featured Property.</p>
             </div>
           </div>
           {/* New Services */}
@@ -237,7 +223,7 @@ const Home = () => {
 
         {/* Featured Properties column-2 */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-16">
           {/* Section Card 1 - Featured Property Service */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md">
             <img
@@ -294,21 +280,6 @@ const Home = () => {
               <p className="text-gray-600">Details about lawyer service.</p>
             </div>
           </div>
-
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about Featured Property.</p>
-            </div>
-          </div>
-          {/* New Services */}
         </div>
 
         {/* Process of buying Properties at our auction */}
