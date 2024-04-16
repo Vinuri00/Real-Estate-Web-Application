@@ -13,6 +13,16 @@ const AdvertisementSchema = new Schema({
         required: [true, "Please enter the description"],
     },
 
+    ownerName: {
+        type: String,
+        required: [true, "Please enter the owner's name"],
+    },
+
+    contactNumber: {
+        type: String,
+        required: [true, "Please enter contact number"],
+    },
+
     image: {
         type: String,
         required: [true, "Please add images of the land"],
