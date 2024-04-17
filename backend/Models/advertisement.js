@@ -23,17 +23,17 @@ const AdvertisementSchema = new Schema({
         required: [true, "Please enter contact number"],
     },
 
-    image: {
-        type: String,
-        required: [true, "Please add images of the land"],
-    },
+    // image: {
+    //     type: String,
+    //     required: [true, "Please add images of the land"],
+    // },
 
     price: {
         type: Number,
         required: [true, "Please enter the price"],
     },
 
-    Location: {
+    location: {
         type: String,
         required: [true, "Please enter the location"],
     },
