@@ -12,7 +12,13 @@ const brokerRouter = express.Router();
 // Add a new broker
 
 brokerRouter.post("/add-new", validateBrokerAdd, async (req, res) => {
-  const { fullName, email, contactNumber, address, city } = req.body;
+  const { 
+    fullName, 
+    email, 
+    contactNumber, 
+    address, 
+    city 
+  } = req.body;
 
   await connection();
 
