@@ -1,5 +1,5 @@
 export const validateAdvertisement = (req, res, next) => {
-    const { title, description, ownerName, contactNumber, image, price, Location } = req.body;
+    const { title, description, ownerName, contactNumber, image, price, location } = req.body;
 
     if (!title) {
         return res.status(400).json({ message: "Please enter the title" });
@@ -17,9 +17,9 @@ export const validateAdvertisement = (req, res, next) => {
         return res.status(400).json({ message: "Please enter contact number" });
     }
 
-    if (!image) {
-        return res.status(400).json({ message: "Please add images of the land" });
-    }
+    // if (!image) {
+    //     return res.status(400).json({ message: "Please add images of the land" });
+    // }
 
     if (!price) {
         return res.status(400).json({ message: "Please enter the price" });
@@ -27,7 +27,7 @@ export const validateAdvertisement = (req, res, next) => {
 
     if (!location) {
         return res.status(400).json({ message: "Please enter the location" });
-    }
+    }    
 
     next();
 };
