@@ -1,24 +1,24 @@
-import Advertisement from "../Models/advertisement";
-import connection from "../Database/conn";
+import Advertisement from "../Models/advertisement.js";
+import connection from "../Database/conn.js";
 import express from "express";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { validateAdvertisement } from "../Middlewares/advertisementValidation";
+import { validateAdvertisement } from "../Middlewares/advertisementValidation.js";
+import mongoose from "mongoose";
 
 dotenv.config();
 
 const advertisementRouter = express.Router();
 
-// Add new advertisement
-advertisementRouter.post("/add", validateAdvertisement, async (req, res) => {
+// Create a new advertisement
+advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
   const {
     title,
     description,
     ownerName,
     contactNumber,
-    image,
+    // image,
     price,
-    Location,
+    location,
   } = req.body;
 
   await connection();
@@ -30,9 +30,9 @@ advertisementRouter.post("/add", validateAdvertisement, async (req, res) => {
       description,
       ownerName,
       contactNumber,
-      image,
+      // image,
       price,
-      Location,
+      location,
     });
 
     await advertisement.save();
@@ -40,6 +40,8 @@ advertisementRouter.post("/add", validateAdvertisement, async (req, res) => {
     if (!advertisement) {
       return res.status(400).json({ message: "Advertisement creation failed" });
     }
+
+    res.status(201).json({ message: "Advertisement created successfully" });
   } catch (error) {
     // res.status(400).json({ message: error.message });
     console.log(error);
@@ -47,8 +49,9 @@ advertisementRouter.post("/add", validateAdvertisement, async (req, res) => {
   }
 });
 
+
 // Get all advertisements
-advertisementRouter.get("/all", async (req, res) => {
+advertisementRouter.get("/get-all", async (req, res) => {
   await connection();
 
   try {
@@ -60,6 +63,7 @@ advertisementRouter.get("/all", async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 // Get advertisement by id
 advertisementRouter.get("/:id", async (req, res) => {
@@ -76,6 +80,7 @@ advertisementRouter.get("/:id", async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 // Update advertisement details
 advertisementRouter.put(
