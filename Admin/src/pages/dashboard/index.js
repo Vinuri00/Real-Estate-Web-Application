@@ -6,3 +6,6 @@ export * from "@/pages/dashboard/UpdateBroker"
 
 // Lawyers
 export * from "@/pages/dashboard/Lawyer"
+
+// Advertisement
+export * from "@/pages/dashboard/Advertisement"
