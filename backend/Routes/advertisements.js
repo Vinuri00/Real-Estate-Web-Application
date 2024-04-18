@@ -99,7 +99,7 @@ advertisementRouter.put(
       description,
       ownerName,
       contactNumber,
-      image,
+      // image,
       price,
       Location,
     } = req.body;
@@ -112,7 +112,7 @@ advertisementRouter.put(
         description,
         ownerName,
         contactNumber,
-        image,
+        // image,
         price,
         Location,
       });
