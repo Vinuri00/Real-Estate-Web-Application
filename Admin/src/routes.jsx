@@ -9,7 +9,8 @@ import { SignIn } from "@/pages/auth";
 import Brokers from "./pages/dashboard/Broker"; // Brokers
 import AddBroker from "./pages/dashboard/AddBroker"; // Add Broker
 import UpdateBroker from "./pages/dashboard/UpdateBroker"; // Update Broker
-import LawyerComponent from "./pages/dashboard/Lawyer";
+import LawyerComponent from "./pages/dashboard/Lawyer"; // Lawyers
+import AdvertisementComponent from "./pages/dashboard/Advertisement"; // Advertisement
 
 
 const icon = {
@@ -41,6 +42,14 @@ export const routes = [
         name: "Manage Lawyers",
         path: "/lawyers",
         element: <LawyerComponent />,
+      },
+
+      {
+        // Manage Advertisements
+        icon: <ServerStackIcon {...icon} />,
+        name: "Manage Advertisements",
+        path: "/advertisements",
+        element: <AdvertisementComponent />,
       },
     ],
   },
