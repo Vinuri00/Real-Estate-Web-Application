@@ -1,14 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import { useEffect, useState } from 'react'
-import axios, { GET_ALL_LAWYERS, APPROVE_LAWYER, REJECT_LAWYER } from '@/api/axios'
+import axios, {
+  GET_ALL_LAWYERS,
+  APPROVE_LAWYER,
+  REJECT_LAWYER
+} from '@/api/axios'
 import { LawyerModel } from '@/models/lawyers'
 import Swal from 'sweetalert2'
-import { Button } from "@material-tailwind/react";
+import { Button } from '@material-tailwind/react'
 
 const LawyerComponent = () => {
   const [lawyer, setLawyer] = useState([LawyerModel])
-  const navigate  = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchLawyers = async () => {
@@ -21,10 +25,10 @@ const LawyerComponent = () => {
       }
     }
 
-    fetchLawyers();
+    fetchLawyers()
   }, [])
 
-  const handleApprove = async (lawyerId) => {
+  const handleApprove = async lawyerId => {
     try {
       const result = await Swal.fire({
         title: 'Are you sure?',
@@ -61,7 +65,7 @@ const LawyerComponent = () => {
     }
   }
 
-  const handleReject = async (lawyerId) => {
+  const handleReject = async lawyerId => {
     try {
       const result = await Swal.fire({
         title: 'Are you sure?',
@@ -79,7 +83,7 @@ const LawyerComponent = () => {
         if (res.status !== 200) {
           throw new Error('Failed to reject lawyer')
         }
-        
+
         Swal.fire({
           title: 'Rejected!',
           text: 'The lawyer has been rejected.',
@@ -97,7 +101,7 @@ const LawyerComponent = () => {
       })
     }
   }
-  
+
   return (
     <>
       <div className="relative mt-8 h-72 w-full overflow-hidden rounded-xl bg-[url('/img/background-image.png')] bg-cover bg-center">
@@ -176,7 +180,11 @@ const LawyerComponent = () => {
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       {/* Shorten if */}
-                      {lawyer.status == 0 ? "Pending" : lawyer.status == 1 ? "Approved" : "Rejected" }
+                      {lawyer.status == 0
+                        ? 'Pending'
+                        : lawyer.status == 1
+                        ? 'Approved'
+                        : 'Rejected'}
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <Button
