@@ -27,6 +27,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    
     try {
       const response = await axios.post("/api/login", formData);
       const { userType } = response.data;
