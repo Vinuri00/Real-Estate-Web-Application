@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import axios, { CREATE_ADVERTISEMENTS } from "../api/axios";
 
 const AdvertisementForm = () => {
-const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    ownerName: '',
-    contactNumber: '',
-    price: '',
-    location: '',
-    images: []
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    ownerName: "",
+    contactNumber: "",
+    price: "",
+    location: "",
+    images: [],
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,33 +22,56 @@ const [formData, setFormData] = useState({
   const handleImageChange = (e) => {
     const images = Array.from(e.target.files);
     if (images.length <= 5) {
-        setFormData({ ...formData, images });
-        setErrorMessage('');
+      setFormData({ ...formData, images });
+      setErrorMessage("");
     } else {
-        // Display an error message or prevent further image selection
-        setErrorMessage('You can only upload up to 5 images');
+      // Display an error message or prevent further image selection
+      setErrorMessage("You can only upload up to 5 images");
     }
   };
+
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Check if there are more than 5 images before submitting the form
     if (formData.images.length > 5) {
-        setErrorMessage('You can only upload up to 5 images');
+      setErrorMessage("You can only upload up to 5 images");
+      return;
     }
 
-    const formDataToSend = new FormData();
-    formData.images.forEach((image, index) => {
-      formDataToSend.append(`image${index + 1}`, image);
-    });
+    const advertisementData = {
+      title: formData.title,
+      description: formData.description,
+      ownerName: formData.ownerName,
+      contactNumber: formData.contactNumber,
+      price: formData.price,
+      location: formData.location,
+    };
+
+    // console.log(advertisementData);
 
     try {
-      const response = await axios.post('/api/advertisement', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const response = await axios.post(
+        CREATE_ADVERTISEMENTS,
+        JSON.stringify(advertisementData),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        },
+      );
       console.log(response.data);
+      // Optionally, reset the form fields after successful submission
+      setFormData({
+        title: "",
+        description: "",
+        ownerName: "",
+        contactNumber: "",
+        price: "",
+        location: "",
+        images: [],
+      });
+      setSuccessMessage("Advertisement created successfully");
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +85,10 @@ const [formData, setFormData] = useState({
         </h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="mb-5">
-            <label htmlFor="title" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="title"
+              className="block mb-2 font-medium text-green-800"
+            >
               Title
             </label>
             <input
@@ -86,7 +112,10 @@ const [formData, setFormData] = useState({
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="description" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="description"
+              className="block mb-2 font-medium text-green-800"
+            >
               Description
             </label>
             <textarea
@@ -109,7 +138,10 @@ const [formData, setFormData] = useState({
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="ownerName" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="ownerName"
+              className="block mb-2 font-medium text-green-800"
+            >
               Owner Name
             </label>
             <input
@@ -133,7 +165,10 @@ const [formData, setFormData] = useState({
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="contactNumber" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="contactNumber"
+              className="block mb-2 font-medium text-green-800"
+            >
               Contact Number
             </label>
             <input
@@ -157,7 +192,10 @@ const [formData, setFormData] = useState({
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="price" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="price"
+              className="block mb-2 font-medium text-green-800"
+            >
               Price
             </label>
             <input
@@ -181,7 +219,10 @@ const [formData, setFormData] = useState({
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="location" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="location"
+              className="block mb-2 font-medium text-green-800"
+            >
               Location
             </label>
             <input
@@ -206,7 +247,10 @@ const [formData, setFormData] = useState({
           </div>
 
           <div className="mb-5">
-            <label htmlFor="images" className="block mb-2 font-medium text-green-800">
+            <label
+              htmlFor="images"
+              className="block mb-2 font-medium text-green-800"
+            >
               Images (Up to 5 images)
             </label>
             <input
@@ -228,16 +272,18 @@ const [formData, setFormData] = useState({
                          text-sm rounded-lg block w-full p-2.5"
             ></input>
           </div>
-          {errorMessage && (
-            <div className="text-red-600">{errorMessage}</div>
+          {errorMessage && <div className="text-red-600">{errorMessage}</div>}
+
+          {successMessage && (
+            <div className="text-green-600">{successMessage}</div>
           )}
 
           <div className="flex justify-center">
             <button
-               type="submit"
-               className="w-full md:w-9/10 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded mt-8" 
+              type="submit"
+              className="w-full md:w-9/10 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded mt-8"
             >
-                Create My Advertisement
+              Create My Advertisement
             </button>
           </div>
         </form>
