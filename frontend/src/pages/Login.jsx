@@ -119,6 +119,19 @@ const Login = () => {
               Login 
             </button>
           </div>
+
+          <div className="mt-4 text-center">
+          If you do not have an account? &nbsp;
+          {/* <Link
+            to="/login"
+            className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
+          >
+            Login here
+          </Link> */}
+          <a href="/register" className="text-green-600 hover:underline">
+            Register here
+          </a>
+        </div>
         </form>
       </div>
     </div>
