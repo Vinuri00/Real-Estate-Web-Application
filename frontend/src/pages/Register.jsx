@@ -10,8 +10,8 @@ const Register = () => {
     fullName: "",
     username: "",
     email: "",
-    password: "",
     phone: "",
+    password: "",
     address: "",
     accountType: "accountType",
     companyName: "",
@@ -88,6 +88,8 @@ const Register = () => {
               <input
                 type="text"
                 id="fullname"
+                value={formData.fullName}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -122,6 +124,8 @@ const Register = () => {
               <input
                 type="username"
                 id="username"
+                value={formData.username}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -147,6 +151,8 @@ const Register = () => {
               <input
                 type="email"
                 id="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -170,6 +176,8 @@ const Register = () => {
               <input
                 type="text"
                 id="phonenumber"
+                value={formData.phone}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -194,6 +202,8 @@ const Register = () => {
               <input
                 type="password"
                 id="password"
+                value={formData.password}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -218,6 +228,9 @@ const Register = () => {
 
               <select
                 name="accountType"
+                id="accountType"
+                value={formData.accountType}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
               dark:text-black 
               placeholder-green-700 
@@ -227,8 +240,6 @@ const Register = () => {
               dark:bg-green-100 
               dark:border-green-500
               text-sm rounded-lg block w-full p-2.5"
-                value={formData.accountType}
-                onChange={handleChange}
               >
                 <option value="accountType" className="">
                   Select the account type that you need
@@ -258,6 +269,8 @@ const Register = () => {
                 <input
                   type="companyName"
                   id="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
                   className="bg-green-50 border border-green-500 text-black 
                   dark:text-black 
                   placeholder-green-700 
@@ -283,6 +296,8 @@ const Register = () => {
                 <input
                   type="licenseNumber"
                   id="licenseNumber"
+                  value={formData.licenseNumber}
+                  onChange={handleChange}
                   className="bg-green-50 border border-green-500 text-black 
                   dark:text-black 
                   placeholder-green-700 
@@ -308,6 +323,8 @@ const Register = () => {
                 <input
                   type="yearsOfExperience"
                   id="yearsOfExperience"
+                  value={formData.yearsOfExperience}
+                  onChange={handleChange}
                   className="bg-green-50 border border-green-500 text-black 
                   dark:text-black 
                   placeholder-green-700 
@@ -336,6 +353,8 @@ const Register = () => {
               <input
                 type="areaOfExpertise"
                 id="areaOfExpertise"
+                value={formData.areaOfExpertise}
+                onChange={handleChange}
                 className="bg-green-50 border border-green-500 text-black 
                   dark:text-black 
                   placeholder-green-700 
