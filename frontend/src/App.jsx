@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Broker from "./pages/Broker";
 import AdvertisementForm from "./pages/Advertisement";
+import AboutUs from "./pages/About";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/broker" element={<Broker />} />
           <Route path="/advertisement" element={<AdvertisementForm />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
 
         {/* This should be belognns to footer */}
