@@ -9,6 +9,7 @@ dotenv.config();
 
 const advertisementRouter = express.Router();
 
+
 // Create a new advertisement
 advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
   const {
@@ -16,7 +17,7 @@ advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
     description,
     ownerName,
     contactNumber,
-    // images,
+    // image,
     price,
     location,
   } = req.body;
