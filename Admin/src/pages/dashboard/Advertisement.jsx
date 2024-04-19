@@ -28,6 +28,8 @@ const AdvertisementComponent = () => {
     fetchAdvertisements()
   }, [])
 
+  console.log(advertisement)
+
   const handleApprove = async (advertisementId) => {
     try {
       const result = await Swal.fire({
