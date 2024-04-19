@@ -10,7 +10,7 @@ const navigation = [
   { name: "START INVESTING", href: "#", current: false },
   { name: "ADVERTISE", href: "/advertisement", current: false },
   { name: "HIRE BROKERS", href: "/broker", current: false },
-  { name: "ABOUT", href: "#", current: false },
+  { name: "ABOUT", href: "/about", current: false },
 ];
 
 function classNames(...classes) {
