@@ -23,6 +23,7 @@ const Register = () => {
   // ----------------------------------------- JavaScript Vaalidation ---------------------------------------------
 
   const [errors, setErrors] = useState({});
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = "";
@@ -40,8 +41,10 @@ const Register = () => {
     try {
       const response = await axios.post("/api/register", formData);
       console.log(response.data);
+      // Handle successful registration
     } catch (error) {
       console.error(error);
+      // Handle error
     }
   };
 
