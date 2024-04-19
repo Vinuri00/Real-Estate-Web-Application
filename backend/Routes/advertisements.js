@@ -16,7 +16,7 @@ advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
     description,
     ownerName,
     contactNumber,
-    // image,
+    // images,
     price,
     location,
   } = req.body;
