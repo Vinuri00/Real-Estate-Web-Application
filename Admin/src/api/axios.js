@@ -20,9 +20,9 @@ export const APPROVE_LAWYER = "/lawyers/approve"; // lawyer: delete lawyer
 export const REJECT_LAWYER = "/lawyers/reject"; // lawyer: delete lawyer
 
 // Advertisement
-export const GET_ALL_ADVERTISEMENTS = "/advertisement/get-all"; // advertisement: get all advertisements
+export const GET_ALL_ADVERTISEMENTS = "/advertisements/get-all"; // advertisement: get all advertisements
 export const APPROVE_ADVERTISEMENT = "/advertisement/approve"; // advertisement: approve advertisement
-export const REJECT_ADVERTISEMENT = "/advertisement/reject"; // advertisement: reject advertisement
+export const REJECT_ADVERTISEMENT = "/advertisements/reject"; // advertisement: reject advertisement
 /*export const DELETE_ADVERTISEMENT = "/advertisement/delete"; // advertisement: delete advertisement*/  
 
 // Payment
