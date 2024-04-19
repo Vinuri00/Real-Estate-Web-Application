@@ -7,25 +7,24 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Broker from "./pages/Broker";
+import AdvertisementForm from "./pages/Advertisement";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      
         <NavBar />
         {/* This should be belognns to navbar */}
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Home />} />
           <Route path="/broker" element={<Broker />} />
+          <Route path="/advertisement" element={<AdvertisementForm />} />
         </Routes>
-
 
         {/* This should be belognns to footer */}
         <Footer />
-
       </BrowserRouter>
     </>
   );
