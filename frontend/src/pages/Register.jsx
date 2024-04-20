@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { validateRegister } from "../utils/RegisterVal";
+import axios, { LAWYERS_REGISTER } from "../api/axios";
 // import { Link } from "react-router-dom";
 // import { useToast, immediateToast } from "izitoast-react";
 // import "izitoast-react/dist/iziToast.css";
@@ -8,22 +8,20 @@ import { validateRegister } from "../utils/RegisterVal";
 const Register = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    username: "",
+    userName: "",
     email: "",
-    phone: "",
+    contactNumber: "",
     password: "",
-    address: "",
     accountType: "accountType",
     companyName: "",
     licenseNumber: "",
     yearsOfExperience: "",
-    areaOfExpertise: "",
   });
 
   // ----------------------------------------- JavaScript Vaalidation ---------------------------------------------
 
   const [errors, setErrors] = useState({});
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = "";
@@ -36,17 +34,60 @@ const Register = () => {
     // setFormData({ ...formData, [name]: value, ["${name}Error"]: errorMessage });
   };
 
+  const [successMessage, setSuccessMessage] = useState("");
+
+  // connection of the lawyer registration form to the backend
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const registrationData = {
+      fullName: formData.fullName,
+      userName: formData.userName,
+      email: formData.email,
+      contactNumber: formData.contactNumber,
+      password: formData.password,
+      companyName: formData.companyName,
+      licenseNumber: formData.licenseNumber,
+      yearsOfExperience: formData.yearsOfExperience,
+    };
+
+    console.log(registrationData);
+
+    // to check the data that is being sent to the backend
+    // console.log(registrationData);
+
     try {
-      const response = await axios.post("/api/register", formData);
+      const response = await axios.post(LAWYERS_REGISTER, registrationData);
+
       console.log(response.data);
-      // Handle successful registration
+      // Optional, reset the form fields after successful submission
+      /* setFormData({
+        fullName: "",
+        username: "",
+        email: "",
+        contactNumber: "",
+        password: "",
+        accountType: "accountType",
+        companyName: "",
+        licenseNumber: "",
+        yearsOfExperience: "",
+      }); */  
+      setSuccessMessage("User Registration successful");
     } catch (error) {
       console.error(error);
-      // Handle error
+      setErrors({ message: "Invalid credentials" });
     }
+
+    // try {
+    //   const response = await axios.post("/api/register", formData);
+    //   console.log(response.data);
+    //   // Handle successful registration
+    // } catch (error) {
+    //   console.error(error);
+    //   // Handle error
+    // }
   };
+  
 
   // ----------------------------------------- JavaScript Vaalidation ---------------------------------------------
 
@@ -91,16 +132,21 @@ const Register = () => {
               <input
                 type="text"
                 id="fullname"
+                name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-              dark:text-black 
-              placeholder-green-700 
-              dark:placeholder-green-500 
-              focus:ring-green-500 focus:border-green-700 
-              dark:bg-green-100 
-              dark:border-green-500
-              text-sm rounded-lg block w-full p-2.5"
+                className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                 placeholder="Bonnie Green"
               />
 
@@ -125,19 +171,23 @@ const Register = () => {
               </label>
 
               <input
-                type="username"
-                id="username"
-                value={formData.username}
+                type="text"
+                id="userName"
+                name="userName"
+                value={formData.userName}
                 onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-              dark:text-black 
-              placeholder-green-700 
-              dark:placeholder-green-500
-              focus:ring-green-500 
-              focus:border-green-700 
-              dark:bg-green-100 
-              dark:border-green-500
-              text-sm rounded-lg block w-full p-2.5"
+                className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                 placeholder="Username"
               />
             </div>
@@ -154,41 +204,51 @@ const Register = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-              dark:text-black 
-              placeholder-green-700 
-              dark:placeholder-green-500 
-              focus:ring-green-500 focus:border-green-700 
-              dark:bg-green-100 
-              dark:border-green-500
-              text-sm rounded-lg block w-full p-2.5"
+                className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                 placeholder="Email Address"
               />
             </div>
 
-            {/* Phone Number */}
+            {/* Contact Number */}
             <div className="mb-5">
               <label
-                htmlFor="phonenumber"
+                htmlFor="contactNumber"
                 className="block mb-4 font-medium text-green-800"
               >
-                Your Phone Number
+                Your Contact Number
               </label>
               <input
                 type="text"
-                id="phonenumber"
-                value={formData.phone}
+                id="contactNumber"
+                name="contactNumber"
+                value={formData.contactNumber}
                 onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-              dark:text-black 
-              placeholder-green-700 
-              dark:placeholder-green-500 
-              focus:ring-green-500 focus:border-green-700 
-              dark:bg-green-100 
-              dark:border-green-500
-              text-sm rounded-lg block w-full p-2.5"
+                className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                 placeholder="+94 711 234 567"
               />
             </div>
@@ -205,17 +265,21 @@ const Register = () => {
               <input
                 type="password"
                 id="password"
+                name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-              dark:text-black 
-              placeholder-green-700 
-              dark:placeholder-green-500
-              focus:ring-green-500 
-              focus:border-green-700 
-              dark:bg-green-100 
-              dark:border-green-500
-              text-sm rounded-lg block w-full p-2.5"
+                className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                 placeholder="Enter your Password"
               />
             </div>
@@ -234,15 +298,18 @@ const Register = () => {
                 id="accountType"
                 value={formData.accountType}
                 onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-              dark:text-black 
-              placeholder-green-700 
-              dark:placeholder-green-500
-              focus:ring-green-500 
-              focus:border-green-700 
-              dark:bg-green-100 
-              dark:border-green-500
-              text-sm rounded-lg block w-full p-2.5"
+                className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
               >
                 <option value="accountType" className="">
                   Select the account type that you need
@@ -272,17 +339,21 @@ const Register = () => {
                 <input
                   type="companyName"
                   id="companyName"
+                  name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
-                  className="bg-green-50 border border-green-500 text-black 
-                  dark:text-black 
-                  placeholder-green-700 
-                  dark:placeholder-green-500
-                  focus:ring-green-500 
-                  focus:border-green-700 
-                  dark:bg-green-100 
-                  dark:border-green-500
-                  text-sm rounded-lg block w-full p-2.5"
+                  className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                   placeholder="Company Name"
                 />
               </div>
@@ -299,17 +370,21 @@ const Register = () => {
                 <input
                   type="licenseNumber"
                   id="licenseNumber"
+                  name="licenseNumber"
                   value={formData.licenseNumber}
                   onChange={handleChange}
-                  className="bg-green-50 border border-green-500 text-black 
-                  dark:text-black 
-                  placeholder-green-700 
-                  dark:placeholder-green-500
-                  focus:ring-green-500 
-                  focus:border-green-700 
-                  dark:bg-green-100 
-                  dark:border-green-500
-                  text-sm rounded-lg block w-full p-2.5 mt-4"
+                  className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                   placeholder="License Number"
                 />
               </div>
@@ -326,50 +401,29 @@ const Register = () => {
                 <input
                   type="yearsOfExperience"
                   id="yearsOfExperience"
+                  name="yearsOfExperience"
                   value={formData.yearsOfExperience}
                   onChange={handleChange}
-                  className="bg-green-50 border border-green-500 text-black 
-                  dark:text-black 
-                  placeholder-green-700 
-                  dark:placeholder-green-500
-                  focus:ring-green-500 
-                  focus:border-green-700 
-                  dark:bg-green-100 
-                  dark:border-green-500
-                  text-sm rounded-lg block w-full p-2.5 mt-4"
+                  className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
                   placeholder="Years of Experience"
                 />
               </div>
             </>
           )}
 
-          {formData.accountType === "investor" && (
-            // Area Of Expertise
-            <div className="mb-5">
-              <label
-                htmlFor="areaOfExpertise"
-                className="block mb-4 font-medium text-green-800"
-              >
-                Area Of Expertise
-              </label>
-
-              <input
-                type="areaOfExpertise"
-                id="areaOfExpertise"
-                value={formData.areaOfExpertise}
-                onChange={handleChange}
-                className="bg-green-50 border border-green-500 text-black 
-                  dark:text-black 
-                  placeholder-green-700 
-                  dark:placeholder-green-500
-                  focus:ring-green-500 
-                  focus:border-green-700 
-                  dark:bg-green-100 
-                  dark:border-green-500
-                  text-sm rounded-lg block w-full p-2.5"
-                placeholder="Area Of Expertise"
-              />
-            </div>
+          {successMessage && (
+            <div className="text-green-600">{successMessage}</div>
           )}
 
           {/* <button type="submit" className="btn">
