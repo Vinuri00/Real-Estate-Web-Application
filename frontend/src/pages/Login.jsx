@@ -1,49 +1,93 @@
 import { useState } from "react";
-import axios from "axios";
+// import { jwtDecode } from "jwt-decode";
+// import Swal from "sweetalert2";
+// import { LOGIN_URL } from "@/api/axios";
+// import { useNavigate } from "react-router-dom";
+// Remove the import statement for 'jwtDecode'
+import axios, { LOGIN_URL } from "../api/axios";
+// import { validateLogin } from "../utils/LoginVal";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post("/api/login", formData);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setErrors({ message: "Invalid credentials"});
-  //   }
-  // };
+  // const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
+    // if (!validateLogin(userName, password)) return;
+
     try {
-      const response = await axios.post("/api/login", formData);
-      const { userType } = response.data;
-      if (userType === "lawyer") {
-        // Redirect to lawyer dashboard
-        console.log("Login successful as lawyer");
-      } else {
-        // handle user login
-        console.log("Login successful as user");
-      }
-    } catch (error) {
-      console.error(error);
-      setErrors({ message: "Invalid credentials" });
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ userName: userName, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      console.log(response);
+
+      if (!response.statusText) throw new Error("Admin Login Failed");
+
+      const { token } = await response.data;
+      document.cookie = `token=${token}; path=/`;
+/* 
+      const decodedToken = jwtDecode(token);
+
+      Swal.fire({
+        title: "GreenLands Admin Panel",
+        text: `Welcome back Admin ${decodedToken.adminName}!`,
+        icon: "success",
+      }).then(() => {
+        navigate("/dashboard/home");
+      }); */
+    } catch (err) {
+      console.error(err);
     }
-  }
+  };
+  // const [formData, setFormData] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+
+  // const [errors, setErrors] = useState({});
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
+
+  // // const handleSubmit = async (e) => {
+  // //   e.preventDefault();
+  // //   try {
+  // //     const response = await axios.post("/api/login", formData);
+  // //     console.log(response.data);
+  // //   } catch (error) {
+  // //     console.error(error);
+  // //     setErrors({ message: "Invalid credentials"});
+  // //   }
+  // // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axios.post("/api/login", formData);
+  //     const { userType } = response.data;
+  //     if (userType === "lawyer") {
+  //       // Redirect to lawyer dashboard
+  //       console.log("Login successful as lawyer");
+  //     } else {
+  //       // handle user login
+  //       console.log("Login successful as user");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     setErrors({ message: "Invalid credentials" });
+  //   }
+  // }
 
   return (
     <div className="flex justify-center items-center h-screen -mt-5">
@@ -63,8 +107,10 @@ const Login = () => {
               type="text"
               id="username"
               name="username"
-              value={formData.username}
-              onChange={handleChange}
+              // value={formData.username}
+              // onChange={handleChange}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               className="bg-green-50 border 
                        border-green-500 
                        text-black
@@ -91,8 +137,10 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              // value={formData.password}
+              // onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="bg-green-50 border 
                        border-green-500 
                        text-black 
@@ -107,33 +155,33 @@ const Login = () => {
             />
           </div>
 
-          {errors.message && (
+          {/* {errors.message && (
             <div className="text-red-500 font-semibold text-sm">
               {errors.message}
             </div>
-          )}
+          )} */}
 
           <div className="flex justify-center">
             <button
               type="submit"
               className="w-full md:w-9/10 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded mt-8"
             >
-              Login 
+              Login
             </button>
           </div>
 
           <div className="mt-4 text-center">
-          If you do not have an account? &nbsp;
-          {/* <Link
+            If you do not have an account? &nbsp;
+            {/* <Link
             to="/login"
             className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded"
           >
             Login here
           </Link> */}
-          <a href="/register" className="text-green-600 hover:underline">
-            Register here
-          </a>
-        </div>
+            <a href="/register" className="text-green-600 hover:underline">
+              Register here
+            </a>
+          </div>
         </form>
       </div>
     </div>
