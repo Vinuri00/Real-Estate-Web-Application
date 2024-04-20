@@ -65,6 +65,7 @@ LawyerSchema.plugin(mongooseUniqueValidator, {
   message: "Username already exists. Duplicate key",
 });
 
+// Create a model
 const Lawyer = models.Lawyers || model("Lawyers", LawyerSchema);
 
 export default Lawyer;
