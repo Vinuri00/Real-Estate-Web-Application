@@ -7,6 +7,7 @@ import adminRouter from "./Routes/admins.js";
 import brokerRouter from "./Routes/brokers.js";
 import lawyerRouter from "./Routes/lawyers.js";
 import advertisementRouter from "./Routes/advertisements.js";
+import userRouter from "./Routes/users.js";
 
 
 dotenv.config();
@@ -33,6 +34,7 @@ app.use("/admins", adminRouter);
 app.use("/brokers", brokerRouter);
 app.use("/lawyers", lawyerRouter);
 app.use("/advertisements", advertisementRouter);
+app.use("/users", userRouter);
 
 app.listen(3000, async () => {
   await connection();
