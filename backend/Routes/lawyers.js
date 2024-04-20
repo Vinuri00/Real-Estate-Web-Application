@@ -26,6 +26,16 @@ lawyerRouter.post("/register", validateLawyerRegister, async (req, res) => {
     yearsOfExperience,
   } = req.body;
 
+  console.log(
+    userName,
+    email,
+    contactNumber,
+    password,
+    companyName,
+    licenseNumber,
+    yearsOfExperience
+  );
+
   await connection();
 
   // adding an lawyer
@@ -45,6 +55,8 @@ lawyerRouter.post("/register", validateLawyerRegister, async (req, res) => {
 
     await lawyer.save();
 
+    console.log(lawyer);
+
     if (!lawyer) {
       return res.status(400).json({ message: "Lawyer registration failed" });
     }
@@ -60,7 +72,8 @@ lawyerRouter.post("/register", validateLawyerRegister, async (req, res) => {
 
     res.status(201).json({ token });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.log(error);
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -75,6 +88,14 @@ lawyerRouter.post("/login", validateLawyerLogin, async (req, res) => {
 
     if (!lawyer) {
       return res.status(400).json({ message: "Lawyer does not exist" });
+    }
+
+    if (lawyer.status === 0) {
+      return res.status(401).json({ message: "Lawyer not approved yet" });
+    }
+
+    if (lawyer.status === 2) {
+      return res.status(401).json({ message: "Lawyer rejected" });
     }
 
     const isMatch = lawyer.validatePassword(password, lawyer.password);
@@ -94,7 +115,7 @@ lawyerRouter.post("/login", validateLawyerLogin, async (req, res) => {
 
     res.status(200).json({ token });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -106,7 +127,7 @@ lawyerRouter.get("/get-all", async (req, res) => {
     const lawyers = await Lawyer.find();
     res.status(200).json(lawyers);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -123,7 +144,7 @@ lawyerRouter.get("/get-one/:id", async (req, res) => {
     }
     res.status(200).json(lawyer);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -164,7 +185,7 @@ lawyerRouter.put("/update/:id", async (req, res) => {
     }
     res.status(200).json({ message: "Lawyer updated successfully" });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -182,7 +203,7 @@ lawyerRouter.delete("/delete/:id", async (req, res) => {
     }
     res.status(200).json({ message: "Lawyer deleted successfully" });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -202,7 +223,7 @@ lawyerRouter.put("/approve/:id", async (req, res) => {
     }
     res.status(200).json({ message: "Lawyer approved successfully" });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -222,7 +243,7 @@ lawyerRouter.put("/reject/:id", async (req, res) => {
     }
     res.status(200).json({ message: "Lawyer rejected successfully" });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
