@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Broker from "./pages/Broker";
 import AdvertisementForm from "./pages/Advertisement";
 import About from "./pages/About";
+import StartInvesting from "./pages/StartInvesting";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/broker" element={<Broker />} />
           <Route path="/advertisement" element={<AdvertisementForm />} />
           <Route path="/about" element={<About />} />
+          <Route path="/startinvesting" element={<StartInvesting/>} />
         </Routes>
 
         {/* This should be belognns to footer */}
