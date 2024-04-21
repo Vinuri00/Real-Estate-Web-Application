@@ -13,11 +13,15 @@ const Broker = () => {
   return (
     <div className="px-28">
       {/* Broker Row - 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-14">
         {brokers.map((broker) => (
           <div
             key={broker._id}
-            className="w-full max-w-sm bg-black border border-gray-200 rounded-lg shadow-md dark:bg-white dark:hover:bg-green-100"
+            className="w-full max-w-sm rounded-lg shadow-md
+                  bg-black border
+                  border-gray-200 
+                  dark:bg-white
+                  dark:hover:bg-green-100"
           >
             <div className="flex flex-col justify-between items-center h-full pb-16 pt-10">
               <img
