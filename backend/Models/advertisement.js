@@ -23,10 +23,10 @@ const AdvertisementSchema = new Schema({
         required: [true, "Please enter contact number"],
     },
 
-    // image: {
-    //     type: String,
-    //     required: [true, "Please add images of the land"],
-    // },
+    images: {
+        type: [String], // Array of image URLs
+        required: [true, "Please enter the images"],
+    },
 
     price: {
         type: Number,
