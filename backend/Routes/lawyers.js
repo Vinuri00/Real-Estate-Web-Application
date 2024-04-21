@@ -14,7 +14,7 @@ dotenv.config();
 const lawyerRouter = express.Router();
 
 // Register new lawyer
-lawyerRouter.post("/register", validateLawyerRegister, async (req, res) => {
+lawyerRouter.post("/register", async (req, res) => {
   const {
     fullName,
     userName,
@@ -104,6 +104,7 @@ lawyerRouter.post("/login", validateLawyerLogin, async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
+    // Generate a token for the lawyer when they login
     // Generate a token for the lawyer when they login
     const token = jwt.sign(
       { lawyerId: lawyer._id, lawyerName: lawyer.fullName },
