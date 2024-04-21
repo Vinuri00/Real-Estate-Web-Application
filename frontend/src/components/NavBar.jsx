@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "HOME", href: "/", current: false },
-  { name: "START INVESTING", href: "#", current: false },
+  { name: "START INVESTING", href: "/startinvesting", current: false },
   { name: "ADVERTISE", href: "/advertisement", current: false },
   { name: "HIRE BROKERS", href: "/broker", current: false },
   { name: "ABOUT", href: "/about", current: false },
@@ -86,9 +86,9 @@ export default function NavBar() {
                   REGISTER
                 </Button> */}
 
-                <Link 
+                <Link
                   to="/register"
-                  className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded text-sm md:text-base"
+                  className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded text-sm md:text-base hidden lg:block"
                 >
                   REGISTER
                 </Link>
@@ -180,6 +180,12 @@ export default function NavBar() {
                   {item.name}
                 </Disclosure.Button>
               ))}
+              <Link
+                to="/register"
+                className="md:ml-4 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded text-sm md:text-base"
+              >
+                REGISTER
+              </Link>
             </div>
           </Disclosure.Panel>
         </>
