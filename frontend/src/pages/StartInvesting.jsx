@@ -1,22 +1,22 @@
-// import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const StartInvesting = () => {
-//   const [advertisements, setAdvertisement] = useState([])
+  const [advertisements, setAdvertisement] = useState([])
 
-//   useEffect(() => {
-//     fetch('http://localhost:3000/advertisement/get-all')
-//       .then(response => response.json())
-//       .then(data => setAdvertisement(data))
-//       .catch(error => console.error('Error fetching advertisements', error))
-//   }, [])
+  useEffect(() => {
+    fetch("http://localhost:3000/advertisements/get-all")
+      .then(response => response.json())
+      .then(data => setAdvertisement(data))
+      .catch(error => console.error('Error fetching advertisements', error))
+  }, [])
   
   return (
     <>
       <div className='px-28'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-14'>
-          {/* {advertisements.map(advertisement => ( */}
+          {advertisements.map(advertisement => (
             <div
-            //   key={advertisement._id}
+              key={advertisement._id}
               className='w-full max-w-sm rounded-lg shadow-md
                 border-gray-200
                 dark:bg-green-100
@@ -29,35 +29,35 @@ const StartInvesting = () => {
                   alt=''
                 />
               </a>
-              <div className='p-10'>
+              <div className='p-4'>
 
                 <a href='#'>
                   <h5 className='mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-black'>
-                    {/* {advertisement.title} */}
-                    Noteworthy technology acquisitions 2021
+                    {advertisement.title}
+                    {/* Noteworthy technology acquisitions 2021 */}
                   </h5>
                 </a>
 
                 <p className='mb-3 font-normal text-center text-gray-700 dark:text-gray-700'>
-                  {/* {advertisement.description} */}
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
+                  {advertisement.description}
+                  {/* Here are the biggest enterprise technology acquisitions of
+                  2021 so far, in reverse chronological order. */}
                 </p>
 
                 <div className="text-sm text-black dark:text-black mt-2">
-                    Owner Name:
+                    Owner Name: {advertisement.ownerName}
                 </div>
 
                 <div className="text-sm text-black dark:text-black mt-2">
-                    Contact Number:
+                    Contact Number: {advertisement.contactNumber}
                 </div>
 
                 <div className="text-sm text-black dark:text-black mt-2">
-                    Price
+                    Price: {advertisement.price}
                 </div>
 
                 <div className="text-sm text-black dark:text-black mt-2">
-                    Location
+                    Location: {advertisement.location}
                 </div>
 
                 <div className='flex justify-center pt-5'>
@@ -87,7 +87,7 @@ const StartInvesting = () => {
                 </div>
               </div>
             </div>
-          {/* ))}  */}
+          ))} 
         </div>
       </div>
     </>
