@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { validateRegister } from "../utils/RegisterVal";
-import axios, { LAWYERS_REGISTER } from "../api/axios";
-// import { Link } from "react-router-dom";
-// import { useToast, immediateToast } from "izitoast-react";
-// import "izitoast-react/dist/iziToast.css";
+import axios, { LAWYERS_REGISTER, USER_REGISTER } from "../api/axios";
 
 const Register = () => {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     fullName: "",
     userName: "",
@@ -18,10 +17,6 @@ const Register = () => {
     yearsOfExperience: "",
   });
 
-  // ----------------------------------------- JavaScript Vaalidation ---------------------------------------------
-
-  const [errors, setErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     let errorMessage = "";
@@ -30,82 +25,56 @@ const Register = () => {
 
     setErrors({ ...errors, [name]: errorMessage });
     setFormData({ ...formData, [name]: value });
-    // setFormData({ ...formData, [e.target.name]: e.target.value });
-    // setFormData({ ...formData, [name]: value, ["${name}Error"]: errorMessage });
   };
-
-  const [successMessage, setSuccessMessage] = useState("");
 
   // connection of the lawyer registration form to the backend
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const registrationData = {
-      fullName: formData.fullName,
-      userName: formData.userName,
-      email: formData.email,
-      contactNumber: formData.contactNumber,
-      password: formData.password,
-      companyName: formData.companyName,
-      licenseNumber: formData.licenseNumber,
-      yearsOfExperience: formData.yearsOfExperience,
-    };
+    if (formData.accountType === "user") {
+      const userData = {
+        fullName: formData.fullName,
+        userName: formData.userName,
+        email: formData.email,
+        contactNumber: formData.contactNumber,
+        password: formData.password,
+      };
 
-    console.log(registrationData);
-
-    // to check the data that is being sent to the backend
-    // console.log(registrationData);
-
-    try {
-      const response = await axios.post(LAWYERS_REGISTER, registrationData);
-
-      console.log(response.data);
-      // Optional, reset the form fields after successful submission
-      /* setFormData({
-        fullName: "",
-        username: "",
-        email: "",
-        contactNumber: "",
-        password: "",
-        accountType: "accountType",
-        companyName: "",
-        licenseNumber: "",
-        yearsOfExperience: "",
-      }); */  
-      setSuccessMessage("User Registration successful");
-    } catch (error) {
-      console.error(error);
-      setErrors({ message: "Invalid credentials" });
+      try {
+        const response = await axios.post(USER_REGISTER, userData);
+        console.log(response.data);
+        setSuccessMessage("User Registration successful");
+      } catch (error) {
+        console.log(error);
+      }
     }
 
-    // try {
-    //   const response = await axios.post("/api/register", formData);
-    //   console.log(response.data);
-    //   // Handle successful registration
-    // } catch (error) {
-    //   console.error(error);
-    //   // Handle error
-    // }
+    if (formData.accountType === "lawyer") {
+      const lawyerData = {
+        fullName: formData.fullName,
+        userName: formData.userName,
+        email: formData.email,
+        contactNumber: formData.contactNumber,
+        password: formData.password,
+        companyName: formData.companyName,
+        licenseNumber: formData.licenseNumber,
+        yearsOfExperience: formData.yearsOfExperience,
+      };
+
+      console.log(lawyerData);
+
+      try {
+        const response = await axios.post(LAWYERS_REGISTER, lawyerData);
+
+        console.log(response.data);
+
+        setSuccessMessage("User Registration successful");
+      } catch (error) {
+        console.error(error);
+        setErrors({ message: "Invalid credentials" });
+      }
+    }
   };
-  
-
-  // ----------------------------------------- JavaScript Vaalidation ---------------------------------------------
-
-  // const handleChange = (e) => {
-  //   const { name, value } = ee.target;
-  //   let errorMessage = "";
-
-  //   switch (name) {
-  //     case "fullName":
-  //       if (value.trim() === "") {
-  //         errorMessage = "Full Name is required";
-  //       }
-
-  //       setFormData({ ...formData, [name]: value, ['${name}Error']: errorMessage});
-  //   };
-  // }
-
-  // --------------------------------------------------------------------------------------------------------------
 
   return (
     <div className="flex justify-center items-center min-h-screen mt-16">
