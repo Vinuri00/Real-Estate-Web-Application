@@ -1,93 +1,55 @@
+import axios, { LAWYER_LOGIN_URL, USER_LOGIN_URL } from "../api/axios";
 import { useState } from "react";
-// import { jwtDecode } from "jwt-decode";
-// import Swal from "sweetalert2";
-// import { LOGIN_URL } from "@/api/axios";
-// import { useNavigate } from "react-router-dom";
-// Remove the import statement for 'jwtDecode'
-import axios, { LOGIN_URL } from "../api/axios";
-// import { validateLogin } from "../utils/LoginVal";
 
 const Login = () => {
-  // const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [accountType, setAccountType] = useState("user");
+
+  const handleUserTypeChange = (e) => {
+    setAccountType(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // if (!validateLogin(userName, password)) return;
+    const accountData = {
+      userName,
+      password,
+    };
 
-    try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ userName: userName, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
+    // return console.log({ accountData, accountType });
 
-      console.log(response);
+    if (accountType === "user") {
+      try {
+        const response = await axios.post(USER_LOGIN_URL, accountData);
 
-      if (!response.statusText) throw new Error("Admin Login Failed");
+        console.log(response);
 
-      const { token } = await response.data;
-      document.cookie = `token=${token}; path=/`;
-/* 
-      const decodedToken = jwtDecode(token);
+        if (!response.statusText) throw new Error("Admin Login Failed");
 
-      Swal.fire({
-        title: "GreenLands Admin Panel",
-        text: `Welcome back Admin ${decodedToken.adminName}!`,
-        icon: "success",
-      }).then(() => {
-        navigate("/dashboard/home");
-      }); */
-    } catch (err) {
-      console.error(err);
+        const { token } = await response.data;
+        document.cookie = `token=${token}; path=/`;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (accountType === "lawyer") {
+      try {
+        const response = await axios.post(LAWYER_LOGIN_URL, accountData);
+
+        console.log(response);
+
+        if (!response.statusText) throw new Error("Lawyer Login Failed");
+
+        const { token } = await response.data;
+        document.cookie = `token=${token}; path=/`;
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
-  // const [formData, setFormData] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-
-  // const [errors, setErrors] = useState({});
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
-
-  // // const handleSubmit = async (e) => {
-  // //   e.preventDefault();
-  // //   try {
-  // //     const response = await axios.post("/api/login", formData);
-  // //     console.log(response.data);
-  // //   } catch (error) {
-  // //     console.error(error);
-  // //     setErrors({ message: "Invalid credentials"});
-  // //   }
-  // // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post("/api/login", formData);
-  //     const { userType } = response.data;
-  //     if (userType === "lawyer") {
-  //       // Redirect to lawyer dashboard
-  //       console.log("Login successful as lawyer");
-  //     } else {
-  //       // handle user login
-  //       console.log("Login successful as user");
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     setErrors({ message: "Invalid credentials" });
-  //   }
-  // }
 
   return (
     <div className="flex justify-center items-center h-screen -mt-5">
@@ -153,6 +115,43 @@ const Login = () => {
                        text-sm rounded-lg block w-full p-2.5"
               placeholder="Password"
             />
+          </div>
+
+          <div>
+            <label
+              htmlFor="accountType"
+              className="block mb-4 font-medium text-green-800"
+            >
+              Account Type
+            </label>
+
+            <select
+              name="accountType"
+              id="accountType"
+              value={accountType}
+              onChange={handleUserTypeChange}
+              className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
+            >
+              <option value="accountType" className="">
+                Select the account type that you need
+              </option>
+              {/* <option value="investor">Investor</option> */}
+              {/* <option value="seller">Seller</option> */}
+              <option value="user">User</option>
+              <option value="lawyer">Lawyer</option>
+              {/* <option value="broker">Broker</option> */}
+            </select>
           </div>
 
           {/* {errors.message && (
