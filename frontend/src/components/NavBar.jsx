@@ -10,6 +10,7 @@ const navigation = [
   { name: "START INVESTING", href: "/startinvesting", current: false },
   { name: "ADVERTISE", href: "/advertisement", current: false },
   { name: "HIRE BROKERS", href: "/broker", current: false },
+  { name: "LEGAL SERVICES", href: "/legalservices", current: false},
   { name: "ABOUT", href: "/about", current: false },
 ];
 
