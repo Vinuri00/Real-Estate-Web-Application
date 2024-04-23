@@ -135,27 +135,32 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-3">
-                    <a href="https://flowbite.com/" className="hover:underline">
+                    <a href="/" className="hover:underline">
                       HOME
                     </a>
                   </li>
                   <li className="mb-3">
-                    <a href="https://tailwindcss.com/" className="hover:underline">
+                    <a href="/startinvesting" className="hover:underline">
                       START INVESTING
                     </a>
                   </li>
                   <li className="mb-3">
-                    <a href="https://flowbite.com/" className="hover:underline">
+                    <a href="/advertisement" className="hover:underline">
                       ADVERTISE
                     </a>
                   </li>
                   <li className="mb-3">
-                    <a href="https://tailwindcss.com/" className="hover:underline">
-                      PROCURE LAND
+                    <a href="/broker" className="hover:underline">
+                      HIRE BROKERS
                     </a>
                   </li>
                   <li className="mb-3">
-                    <a href="https://tailwindcss.com/" className="hover:underline">
+                    <a href="/legalservices" className="hover:underline">
+                      LEGAL SERVICES
+                    </a>
+                  </li>
+                  <li className="mb-3">
+                    <a href="/about" className="hover:underline">
                       ABOUT
                     </a>
                   </li>
@@ -170,7 +175,7 @@ const Footer = () => {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-3">
                     <a
-                      href="https://github.com/themesberg/flowbite"
+                      href="/startinvesting"
                       className="hover:underline "
                     >
                       Lands
@@ -186,18 +191,18 @@ const Footer = () => {
                   </li>
                   <li className="mb-3">
                     <a
-                      href="https://discord.gg/4eeurUVvTy"
+                      href="/broker"
                       className="hover:underline"
                     >
-                      Brokers' GUIDE
+                      Hire Brokers
                     </a>
                   </li>
                   <li className="mb-3">
                     <a
-                      href="https://discord.gg/4eeurUVvTy"
+                      href="/legalservices"
                       className="hover:underline"
                     >
-                      Lawyers' GUIDE
+                      Legal Services
                     </a>
                   </li>
                 </ul>
