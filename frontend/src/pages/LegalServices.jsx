@@ -9,7 +9,7 @@ const LegalServices = () => {
             Trust Us to Safeguard Your Real Estate Investments
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-24">
-            Don't stress over taxes. Hand them off to a pro for <strong className="font-extrabold">HALF OFF </strong>  
+            Don't stress over taxes. Hand them off to a pro for <strong className="font-extrabold"><i>HALF OFF </i></strong>  
             and relax.
             Say goodbye to tax-related stress and let us handle your legal needs.
             Contact us today to schedule an appointment and take advantage of this exclusive offer!
