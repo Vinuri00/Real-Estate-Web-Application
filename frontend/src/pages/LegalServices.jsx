@@ -123,13 +123,22 @@ const LegalServices = () => {
                 Design
               </a>
               <h2 className="text-gray-900 dark:text-black text-3xl font-extrabold mb-2">
-                Start with Flowbite Design System
+                Business and Contracts
               </h2>
-              <p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
+              {/* <p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
                 Static websites are now used to bootstrap lots of websites and
                 are becoming the basis for a variety of tools that even
                 influence both web designers and developers.
-              </p>
+              </p> */}
+
+              <ul className="list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10">
+                <li>Leasehold Land</li>
+                <li>Slae and purchase Contracts</li>
+                <li>Option Contracts</li>
+                <li>Ground Lease Agreements</li>
+                <li>Development Agreement</li>
+              </ul>
+
               <a
                 href="#"
                 className="text-green-600 dark:text-green-500 hover:underline font-medium text-lg inline-flex items-center"
@@ -173,13 +182,21 @@ const LegalServices = () => {
                 Code
               </a>
               <h2 className="text-gray-900 dark:text-black text-3xl font-extrabold mb-2">
-                Best react libraries around the web
+                Real Estate
               </h2>
-              <p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
+              {/* <p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
                 Static websites are now used to bootstrap lots of websites and
                 are becoming the basis for a variety of tools that even
                 influence both web designers and developers.
-              </p>
+              </p> */}
+
+              <ul className="list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10">
+                <li>Industrial Lands</li>
+                <li>Office Space</li>
+                <li>Hospitality and Tourism</li>
+                <li>Multifamily Residential</li>
+                <li>Commercial Form and Agricultural Land</li>
+              </ul>
               <a
                 href="#"
                 className="text-green-600 dark:text-green-500 hover:underline font-medium text-lg inline-flex items-center"
@@ -223,13 +240,23 @@ const LegalServices = () => {
                 Code
               </a>
               <h2 className="text-gray-900 dark:text-black text-3xl font-extrabold mb-2">
-                Best react libraries around the web
+                Family and Personal
               </h2>
-              <p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
+              {/* <p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
                 Static websites are now used to bootstrap lots of websites and
                 are becoming the basis for a variety of tools that even
                 influence both web designers and developers.
-              </p>
+              </p> */}
+
+              <ul className="list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10">
+                <li>For gift dead</li>
+                <li>Ancestral Land</li>
+                <li>Inherited Land </li>
+                <li>Family Estate</li>
+                <li>Trust Property</li>
+                <li>Jointly Owned Land</li>
+                <li>Heritage Land</li>
+              </ul>
               <a
                 href="#"
                 className="text-green-600 dark:text-green-500 hover:underline font-medium text-lg inline-flex items-center"
