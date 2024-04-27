@@ -49,7 +49,7 @@ const LegalServices = () => {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-green-950">
+      <section className="bg-white dark:bg-white">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
           {/* <div className="bg-gray-50 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 mb-8">
             <a
@@ -98,7 +98,7 @@ const LegalServices = () => {
             </a>
           </div> */}
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray-200">
               <a
                 href="#"
                 className="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-green-400 mb-2"
@@ -120,7 +120,7 @@ const LegalServices = () => {
                 >
                   <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h11a2.5 2.5 0 0 1 0 5h-11A2.5 2.5 0 0 1 2 4.5ZM2.75 9.083a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 12.663a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H2.75ZM2.75 16.25a.75.75 0 0 0 0 1.5h14.5a.75.75 0 1 0 0-1.5H2.75Z" />
                 </svg>
-                Design
+                Transactions
               </a>
               <h2 className="text-gray-900 dark:text-black text-3xl font-extrabold mb-2">
                 Business and Contracts
@@ -161,7 +161,7 @@ const LegalServices = () => {
                 </svg>
               </a>
             </div>
-            <div className="bg-gray-50 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray-300">
               <a
                 href="#"
                 className="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-yellow-400 mb-2"
@@ -179,7 +179,7 @@ const LegalServices = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                Code
+                Property
               </a>
               <h2 className="text-gray-900 dark:text-black text-3xl font-extrabold mb-2">
                 Real Estate
@@ -219,7 +219,7 @@ const LegalServices = () => {
                 </svg>
               </a>
             </div>
-            <div className="bg-gray-50 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray-300">
               <a
                 href="#"
                 className="bg-purple-100 text-yellow-300 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-blue-400 mb-2"
@@ -237,7 +237,7 @@ const LegalServices = () => {
                   />
                   <path d="M3 18.4v-2.796a4.3 4.3 0 0 0 .713.31A26.226 26.226 0 0 0 12 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 0 1-6.477-.427C4.047 21.128 3 19.852 3 18.4Z" />
                 </svg>
-                Code
+                Legacy
               </a>
               <h2 className="text-gray-900 dark:text-black text-3xl font-extrabold mb-2">
                 Family and Personal
