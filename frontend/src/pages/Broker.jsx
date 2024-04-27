@@ -25,7 +25,7 @@ const Broker = () => {
           >
             <div className="flex flex-col justify-between items-center h-full pb-16 pt-10">
               <img
-                className="w-32 h-32 mb-3 rounded-full shadow-xl"
+                className="w-32 h-32 mb-3 rounded-full shadow-2xl"
                 style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.4)" }}
                 // src={broker.image}
                 src= "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?size=626&ext=jpg&ga=GA1.1.735520172.1710806400&semt=sph"
