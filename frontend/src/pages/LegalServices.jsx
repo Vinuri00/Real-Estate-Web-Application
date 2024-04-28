@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 const LegalServices = () => {
+  /* const [tooltipContent, setTooltipContent] = useState("");
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e, content) => {
+    setTooltipPosition({ x: e.pageX, y: e.pageY });
+    setTooltipContent(content);
+  };
+
+  const handleMouseLeave = () => {
+    setTooltipContent("");
+  }; */
+
   return (
     <>
       <section className="bg-center bg-cover bg-no-repeat bg-[url('assets/images/legal1.webp')] bg-gray-600 bg-blend-multiply">
@@ -49,8 +61,14 @@ const LegalServices = () => {
         </div>
       </section>
 
+      {/* <div className="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-4 py-8">
+        <h2 className="font-extrabold tracking-tight leading-none text-black md:text-xl lg:text-4xl">
+          Our most popular documents
+        </h2>
+      </div> */}
+
       <section className="bg-white dark:bg-white">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+        <div className="py-2 px-4 mx-auto max-w-screen-xl lg:py-16">
           {/* <div className="bg-gray-50 dark:bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 mb-8">
             <a
               href="#"
@@ -98,7 +116,11 @@ const LegalServices = () => {
             </a>
           </div> */}
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray-200">
+            <div
+              className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray-200 relative"
+              // onMouseMove={(e) => handleMouseMove(e, "Tooltip content")}
+              // onMouseLeave={handleMouseLeave}
+            >
               <a
                 href="#"
                 className="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-green-400 mb-2"
@@ -160,6 +182,13 @@ const LegalServices = () => {
                   />
                 </svg>
               </a>
+              <div
+                id="tooltip"
+                className="bg-black text-white text-sm p-1 absolute rounded-md pointer-events-none"
+                style={{ display: "none" }}
+              >
+                Tooltip content
+              </div>
             </div>
             <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray-300">
               <a
@@ -280,6 +309,46 @@ const LegalServices = () => {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <div className="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-4 py-8">
+        <h2 className="font-extrabold tracking-tight leading-none text-black md:text-xl lg:text-5xl">
+          <i>Rocket Lawyer</i>
+        </h2>
+      </div>
+
+      <section className="bg-gray-100 dark:bg-green-950">
+        <div className="py-12 px-4 mx-auto max-w-screen-xl text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
+            Have a Legal Question? Get Answers from a Legal Professional
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-gray-400 mb-8">
+            Rocket Lawyer attorneys are available to answer your legal questions
+            24/7. Ask a legal question today and get answers from a professional
+            attorney.
+          </p>
+          <a
+            href="#"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900"
+          >
+            Ask a legal question
+            <svg
+              className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9"
+              />
+            </svg>
+          </a>
         </div>
       </section>
     </>
