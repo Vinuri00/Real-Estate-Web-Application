@@ -19,15 +19,27 @@ const AdvertisementForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageChange = (e) => {
-    const images = Array.from(e.target.files);
-    if (images.length <= 5) {
-      setFormData({ ...formData, images });
-      setErrorMessage("");
-    } else {
-      // Display an error message or prevent further image selection
-      setErrorMessage("You can only upload up to 5 images");
-    }
+  // const handleImageChange = (e) => {
+  //   const images = Array.from(e.target.files);
+  //   if (images.length <= 5) {
+  //     setFormData({ ...formData, images });
+  //     setErrorMessage("");
+  //   } else {
+  //     // Display an error message or prevent further image selection
+  //     setErrorMessage("You can only upload up to 5 images");
+  //   }
+  // };
+
+  const convertToBase64 = (e) => {
+    // console.log(e);
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = function () {
+      console.log(reader.result); // This will log the base64 encoded string
+    };
+    reader.onerror = (error) => {
+      console.log("Error: ", error);
+    };
   };
 
   const [successMessage, setSuccessMessage] = useState("");
@@ -58,7 +70,7 @@ const AdvertisementForm = () => {
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
-        },
+        }
       );
       console.log(response.data);
       // Optionally, reset the form fields after successful submission
@@ -253,13 +265,31 @@ const AdvertisementForm = () => {
             >
               Images (Up to 5 images)
             </label>
-            <input
+            {/* <input
               type="file"
               id="images"
               name="images"
               accept="image/*"
               multiple
               onChange={handleImageChange}
+              className="bg-green-50 border 
+                         border-green-500 
+                         text-black
+                         dark:text-black
+                         placeholder-green-700
+                         focus:ring-green-500
+                         focus:border-green-700
+                         dark:bg-green-100
+                         dark:border-green-500
+                         text-sm rounded-lg block w-full p-2.5"
+            ></input> */}
+            <input
+              type="file"
+              id="images"
+              name="images"
+              accept="image/*"
+              multiple
+              onChange={convertToBase64}
               className="bg-green-50 border 
                          border-green-500 
                          text-black
