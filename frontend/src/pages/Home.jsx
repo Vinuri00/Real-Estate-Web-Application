@@ -282,18 +282,18 @@ const Home = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 mx-auto">
-          <div className="text-center">
+        <div className="font-serif grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 mx-auto">
+          <div className="text-center hover:scale-125 transition-transform duration-500">
             <p className="text-5xl font-bold text-red-600">20+</p>
             <p className="text-3xl font-bold pt-3">Years Experience</p>
           </div>
 
-          <div className="text-center">
+          <div className="text-center hover:scale-110 transition-transform duration-500">
             <p className="text-5xl font-bold text-red-600">3.5K</p>
             <p className="text-3xl font-bold pt-3">Unit Sold</p>
           </div>
 
-          <div className="text-center">
+          <div className="text-center hover:scale-110 transition-transform duration-500">
             <p className="text-5xl font-bold text-red-600">15+</p>
             <p className="text-3xl font-bold pt-3">Acheivement Awards</p>
           </div>
