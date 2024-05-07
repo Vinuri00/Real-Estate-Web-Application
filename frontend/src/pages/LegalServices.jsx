@@ -15,6 +15,7 @@ const LegalServices = () => {
 
   return (
     <>
+    <div className="">
       <section className="bg-center bg-cover bg-no-repeat bg-[url('assets/images/legal1.webp')] bg-gray-600 bg-blend-multiply">
         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
@@ -79,7 +80,7 @@ const LegalServices = () => {
         <div className="py-2 px-4 mx-auto max-w-screen-xl">
           <div className="grid md:grid-cols-3 gap-8">
             <div
-              className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray relative"
+              className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray relative hover:scale-95 transition-transform duration-700"
               // onMouseMove={(e) => handleMouseMove(e, "Tooltip content")}
               // onMouseLeave={handleMouseLeave}
             >
@@ -115,7 +116,7 @@ const LegalServices = () => {
                 influence both web designers and developers.
               </p> */}
 
-              <ul className="list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10">
+              <ul className="font-serif list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10 mt-6">
                 <li>Leasehold Land</li>
                 <li>Slae and purchase Contracts</li>
                 <li>Option Contracts</li>
@@ -152,7 +153,7 @@ const LegalServices = () => {
                 Tooltip content
               </div>
             </div>
-            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray hover:scale-95 transition-transform duration-700">
               <a
                 href="#"
                 className="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-yellow-400 mb-2"
@@ -181,7 +182,7 @@ const LegalServices = () => {
                 influence both web designers and developers.
               </p> */}
 
-              <ul className="list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10">
+              <ul className="font-serif list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10 mt-6">
                 <li>Industrial Lands</li>
                 <li>Office Space</li>
                 <li>Hospitality and Tourism</li>
@@ -210,7 +211,7 @@ const LegalServices = () => {
                 </svg>
               </a>
             </div>
-            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray hover:scale-95 transition-transform duration-700">
               <a
                 href="#"
                 className="bg-purple-100 text-yellow-300 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-blue-400 mb-2"
@@ -239,7 +240,7 @@ const LegalServices = () => {
                 influence both web designers and developers.
               </p> */}
 
-              <ul className="list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10">
+              <ul className="font-serif list-disc text-lg font-normal text-gray-500 dark:text-gray-500 mb-4 pl-10 mt-6">
                 <li>For gift dead</li>
                 <li>Ancestral Land</li>
                 <li>Inherited Land </li>
@@ -285,9 +286,11 @@ const LegalServices = () => {
               questions 24/7. Ask a legal question today and get answers from a
               professional attorney.
             </p>
-            <a
+            <button
               href="#"
-              className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900"
+              type="button"
+              className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900
+              transition duration-700 ease-in-out"
             >
               Ask a legal question
               <svg
@@ -305,7 +308,7 @@ const LegalServices = () => {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
+            </button>
           </div>
         </section>
       </div>
@@ -336,8 +339,8 @@ const LegalServices = () => {
       </div>
 
       <div className="py-2 px-4 mx-auto max-w-screen-xl">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="max-w-sm p-6 bg-white border rounded-lg shadow-xl border-gray-200 relative dark:bg-white dark:border-gray mt-14 text-center">
+        <div className="grid md:grid-cols-3 gap-8 font-serif">
+          <div className="max-w-sm p-6 bg-white border rounded-lg shadow-xl border-gray-200 relative dark:bg-white dark:border-gray mt-14 text-center hover:scale-110 transition-transform duration-500">
             <svg
               className="w-20 h-20 text-gray-600 dark:text-black mb-3 items-center mx-auto"
               aria-hidden="true"
@@ -397,7 +400,7 @@ const LegalServices = () => {
             </a>
           </div>
 
-          <div className="max-w-sm p-6 bg-white border rounded-lg shadow-xl border-gray-200 relative dark:bg-white dark:border-gray mt-14 text-center">
+          <div className="max-w-sm p-6 bg-white border rounded-lg shadow-xl border-gray-200 relative dark:bg-white dark:border-gray mt-14 text-center hover:scale-110 transition-transform duration-500">
             <svg
               className="w-20 h-20 text-gray-600 dark:text-black mb-3 items-center mx-auto"
               aria-hidden="true"
@@ -452,7 +455,7 @@ const LegalServices = () => {
             </a>
           </div>
 
-          <div className="max-w-sm p-6 bg-white border rounded-lg shadow-xl border-gray-200 relative dark:bg-white dark:border-gray mt-14 text-center">
+          <div className="max-w-sm p-6 bg-white border rounded-lg shadow-xl border-gray-200 relative dark:bg-white dark:border-gray mt-14 text-center hover:scale-110 transition-transform duration-500">
             <svg
               className="w-20 h-20 text-gray-600 dark:text-black mb-3 items-center mx-auto"
               aria-hidden="true"
@@ -506,6 +509,7 @@ const LegalServices = () => {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
