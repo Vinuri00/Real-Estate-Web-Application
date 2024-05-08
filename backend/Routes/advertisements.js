@@ -9,7 +9,6 @@ dotenv.config();
 
 const advertisementRouter = express.Router();
 
-
 // Create a new advertisement
 advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
   const {
@@ -17,9 +16,9 @@ advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
     description,
     ownerName,
     contactNumber,
-    // image,
     price,
     location,
+    images,
   } = req.body;
 
   await connection();
@@ -31,9 +30,9 @@ advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
       description,
       ownerName,
       contactNumber,
-      // image,
       price,
       location,
+      images,
     });
 
     await advertisement.save();
@@ -50,7 +49,6 @@ advertisementRouter.post("/create", validateAdvertisement, async (req, res) => {
   }
 });
 
-
 // Get all advertisements
 advertisementRouter.get("/get-all", async (req, res) => {
   await connection();
@@ -64,7 +62,6 @@ advertisementRouter.get("/get-all", async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
-
 
 // Get advertisement by id
 advertisementRouter.get("/:id", async (req, res) => {
@@ -81,7 +78,6 @@ advertisementRouter.get("/:id", async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
-
 
 // Update advertisement details
 advertisementRouter.put(
@@ -129,7 +125,6 @@ advertisementRouter.put(
   }
 );
 
-
 // Delete advertisement
 advertisementRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
@@ -149,48 +144,46 @@ advertisementRouter.delete("/delete/:id", async (req, res) => {
   }
 });
 
-
 // Approve advertisement
 advertisementRouter.put("/approve/:id", async (req, res) => {
-    const { id } = req.params;
-    
-    await connection();
-    
-    try {
-        const advertisement = await Advertisement.findByIdAndUpdate(id, {
-        status: 1,
-        });
-    
-        if (!advertisement) {
-        return res.status(400).json({ message: "Advertisement not found" });
-        }
-        res.status(200).json({ message: "Advertisement approved successfully" });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: "Internal server error" });
-    }
-});
+  const { id } = req.params;
 
+  await connection();
+
+  try {
+    const advertisement = await Advertisement.findByIdAndUpdate(id, {
+      status: 1,
+    });
+
+    if (!advertisement) {
+      return res.status(400).json({ message: "Advertisement not found" });
+    }
+    res.status(200).json({ message: "Advertisement approved successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 // Reject advertisement
 advertisementRouter.put("/reject/:id", async (req, res) => {
-    const { id } = req.params;
-    
-    await connection();
-    
-    try {
-        const advertisement = await Advertisement.findByIdAndUpdate(id, {
-        status: 2,
-        });
-    
-        if (!advertisement) {
-        return res.status(400).json({ message: "Advertisement not found" });
-        }
-        res.status(200).json({ message: "Advertisement rejected successfully" });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: "Internal server error" });
+  const { id } = req.params;
+
+  await connection();
+
+  try {
+    const advertisement = await Advertisement.findByIdAndUpdate(id, {
+      status: 2,
+    });
+
+    if (!advertisement) {
+      return res.status(400).json({ message: "Advertisement not found" });
     }
+    res.status(200).json({ message: "Advertisement rejected successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 export default advertisementRouter;
