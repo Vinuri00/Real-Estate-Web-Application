@@ -80,7 +80,7 @@ const LegalServices = () => {
         <div className="py-2 px-4 mx-auto max-w-screen-xl">
           <div className="grid md:grid-cols-3 gap-8">
             <div
-              className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray relative hover:scale-95 transition-transform duration-700"
+              className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray relative hover:scale-110 transition-transform duration-500"
               // onMouseMove={(e) => handleMouseMove(e, "Tooltip content")}
               // onMouseLeave={handleMouseLeave}
             >
@@ -153,7 +153,7 @@ const LegalServices = () => {
                 Tooltip content
               </div>
             </div>
-            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray hover:scale-95 transition-transform duration-700">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray hover:scale-110 transition-transform duration-500">
               <a
                 href="#"
                 className="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-yellow-400 mb-2"
@@ -211,7 +211,7 @@ const LegalServices = () => {
                 </svg>
               </a>
             </div>
-            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray hover:scale-95 transition-transform duration-700">
+            <div className="bg-gray-50 dark:bg-white rounded-lg p-8 md:p-12 shadow-2xl border border-gray hover:scale-110 transition-transform duration-500">
               <a
                 href="#"
                 className="bg-purple-100 text-yellow-300 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-green-950 dark:text-blue-400 mb-2"
