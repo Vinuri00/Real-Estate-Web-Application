@@ -26,7 +26,21 @@ const corsData = {
 
 app.use(cors(corsData));
 
-app.use(bodyParser.json());
+// Middleware setup
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
 
 app.use(express.json());
 
