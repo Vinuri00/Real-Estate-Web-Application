@@ -44,6 +44,11 @@ const LawyerSchema = new Schema({
     required: [true, "Please enter yearsOfExperience"],
   },
 
+  image: {
+    type: String,
+    required: [true, "Please enter image"],
+  },
+
   status: {
     type: Number,
     default: 0,         // 0 - Pending, 1 - Approved, 2 - Rejected
