@@ -11,6 +11,8 @@ import AdvertisementForm from "./pages/Advertisement";
 import About from "./pages/About";
 import StartInvesting from "./pages/StartInvesting";
 import LegalServices from "./pages/LegalServices";
+import LawyerDetails from "./pages/LawyerDetails";
+import BookingLawyer from "./pages/BookingLawyer";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/startinvesting" element={<StartInvesting/>} />
           <Route path="/LegalServices" element={<LegalServices/>} />
+          <Route path="/LaweyrDetails" element={<LawyerDetails/>} />
+          <Route path="/BookingLawyer" element={<BookingLawyer/>} />
         </Routes>
 
         {/* This should be belognns to footer */}
