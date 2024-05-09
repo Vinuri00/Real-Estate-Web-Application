@@ -136,6 +136,39 @@ lawyerRouter.get("/get-all", async (req, res) => {
   }
 });
 
+lawyerRouter.get("/get-all-approved", async (req, res) => {
+  await connection();
+
+  try {
+    const lawyers = await Lawyer.find({ status: 1 });
+    res.status(200).json(lawyers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+lawyerRouter.get("/get-all-pending", async (req, res) => {
+  await connection();
+
+  try {
+    const lawyers = await Lawyer.find({ status: 0 });
+    res.status(200).json(lawyers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+lawyerRouter.get("/get-all-rejected", async (req, res) => {
+  await connection();
+
+  try {
+    const lawyers = await Lawyer.find({ status: 2 });
+    res.status(200).json(lawyers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Get lawyer by id
 lawyerRouter.get("/get-one/:id", async (req, res) => {
   const { id } = req.params;
