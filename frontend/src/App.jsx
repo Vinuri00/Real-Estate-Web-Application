@@ -29,8 +29,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/startinvesting" element={<StartInvesting/>} />
           <Route path="/LegalServices" element={<LegalServices/>} />
-          <Route path="/LaweyrDetails" element={<LawyerDetails/>} />
-          <Route path="/BookingLawyer" element={<BookingLawyer/>} />
+          <Route path="/LaweyerDetails" element={<LawyerDetails/>} />
+          <Route path="/BookingLawyer/:lawyerId" element={<BookingLawyer/>} />
         </Routes>
 
         {/* This should be belognns to footer */}
