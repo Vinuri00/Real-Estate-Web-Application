@@ -23,8 +23,11 @@ lawyerRouter.post("/register", async (req, res) => {
     password,
     companyName,
     licenseNumber,
+    image,
     yearsOfExperience,
   } = req.body;
+
+  // const image = req.files.image;
 
   console.log(
     userName,
@@ -49,6 +52,7 @@ lawyerRouter.post("/register", async (req, res) => {
       companyName,
       licenseNumber,
       yearsOfExperience,
+      image,
     });
 
     lawyer.password = lawyer.encryptLawyerPassword(password);
