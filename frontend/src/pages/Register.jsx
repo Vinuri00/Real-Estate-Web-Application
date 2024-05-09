@@ -15,7 +15,21 @@ const Register = () => {
     companyName: "",
     licenseNumber: "",
     yearsOfExperience: "",
+    image: "",
   });
+
+  const convertToBase64 = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+
+    reader.onload = function () {
+      setFormData({ ...formData, image: reader.result });
+    };
+
+    reader.onerror = function (error) {
+      console.log("Error: ", error);
+    };
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,6 +73,7 @@ const Register = () => {
         companyName: formData.companyName,
         licenseNumber: formData.licenseNumber,
         yearsOfExperience: formData.yearsOfExperience,
+        image: formData.image,
       };
 
       console.log(lawyerData);
@@ -387,6 +402,58 @@ const Register = () => {
                         text-sm rounded-lg block w-full p-2.5"
                   placeholder="Years of Experience"
                 />
+              </div>
+
+              {/* Image of the Lawyer */}
+              <div className="mb-5">
+                <label
+                  htmlFor="images"
+                  className="block mt-4 font-medium text-green-800"
+                >
+                  Add your Image
+                </label>
+
+                <div className="mb-8">
+                  {/* <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    className="sr-only"
+                    onChange={convertToBase64}
+                  /> */}
+                  {formData.image === "" || formData.image == null ? (
+                    ""
+                  ) : (
+                    <img width={100} height={100} src={formData.image} alt="" />
+                  )}
+                </div>
+
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  onChange={convertToBase64}
+                  multiple
+                  className="
+                        bg-green-50 border
+                        border-green-500 
+                        text-black 
+                        dark:text-black 
+                        placeholder-green-700 
+                        dark:placeholder-green-500 
+                        focus:ring-green-500 
+                        focus:border-green-700 
+                        dark:bg-green-100 
+                        dark:border-green-500
+                        text-sm rounded-lg block w-full p-2.5"
+                  placeholder="Years of Experience"
+                />
+                {/* {image === "" || image == null ? (
+                  ""
+                ) : (
+                  <img width={100} height={100} src={image} alt="" />
+                )} */}
               </div>
             </>
           )}
