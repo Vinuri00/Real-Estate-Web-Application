@@ -7,6 +7,7 @@ import adminRouter from "./Routes/admins.js";
 import brokerRouter from "./Routes/brokers.js";
 import lawyerRouter from "./Routes/lawyers.js";
 import advertisementRouter from "./Routes/advertisements.js";
+import bookLawyerRoute from "./Routes/bookLawyer.js";
 import userRouter from "./Routes/users.js";
 
 
@@ -49,6 +50,7 @@ app.use("/brokers", brokerRouter);
 app.use("/lawyers", lawyerRouter);
 app.use("/advertisements", advertisementRouter);
 app.use("/users", userRouter);
+app.use("/booklawyer", bookLawyerRoute);
 
 app.listen(3000, async () => {
   await connection();
