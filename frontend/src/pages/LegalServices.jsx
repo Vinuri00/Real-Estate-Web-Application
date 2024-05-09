@@ -287,7 +287,7 @@ const LegalServices = () => {
                 a professional attorney.
               </p>
               <a
-                href="/LaweyrDetails"
+                href="/LaweyerDetails"
                 type="button"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900
               transition duration-700 ease-in-out"
