@@ -248,7 +248,7 @@ const AdvertisementForm = () => {
               htmlFor="price"
               className="block mb-2 font-medium text-green-800"
             >
-              Price
+              Price per perch
             </label>
             <input
               type="text"
@@ -305,24 +305,7 @@ const AdvertisementForm = () => {
             >
               Images (Up to 5 images)
             </label>
-            {/* <input
-              type="file"
-              id="images"
-              name="images"
-              accept="image/*"
-              multiple
-              onChange={handleImageChange}
-              className="bg-green-50 border 
-                         border-green-500 
-                         text-black
-                         dark:text-black
-                         placeholder-green-700
-                         focus:ring-green-500
-                         focus:border-green-700
-                         dark:bg-green-100
-                         dark:border-green-500
-                         text-sm rounded-lg block w-full p-2.5"
-            ></input> */}
+
             <input
               type="file"
               id="images"
