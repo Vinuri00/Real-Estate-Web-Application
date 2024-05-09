@@ -29,6 +29,12 @@ const BookLawyerSchema = new Schema({
     type: String,
     required: [true, "Please enter City"],
   },
+
+  date: {
+    type: Date,
+    required: true,
+  },
+  
 });
 
 // Validate the email and contact number
