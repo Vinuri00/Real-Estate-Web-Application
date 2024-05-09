@@ -286,8 +286,8 @@ const LegalServices = () => {
                 questions 24/7. Ask a legal question today and get answers from
                 a professional attorney.
               </p>
-              <button
-                href="#"
+              <a
+                href="/LaweyrDetails"
                 type="button"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900
               transition duration-700 ease-in-out"
@@ -308,7 +308,7 @@ const LegalServices = () => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
           </section>
         </div>
