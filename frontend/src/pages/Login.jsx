@@ -1,7 +1,10 @@
 import axios, { LAWYER_LOGIN_URL, USER_LOGIN_URL } from "../api/axios";
 import { useState } from "react";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("user");
@@ -29,7 +32,9 @@ const Login = () => {
         if (!response.statusText) throw new Error("Admin Login Failed");
 
         const { token } = await response.data;
-        document.cookie = `token=${token}; path=/`;
+        console.log(token);
+        Cookies.set("token", token);
+        navigate("/");
       } catch (err) {
         console.error(err);
       }
@@ -44,7 +49,9 @@ const Login = () => {
         if (!response.statusText) throw new Error("Lawyer Login Failed");
 
         const { token } = await response.data;
-        document.cookie = `token=${token}; path=/`;
+        console.log(token);
+        Cookies.set("token", token);
+        navigate("/");
       } catch (err) {
         console.error(err);
       }
