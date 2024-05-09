@@ -32,7 +32,7 @@ const LegalServices = () => {
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
               <a
-                href="#"
+                href="#legal-question"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900"
               >
                 Get started
@@ -276,7 +276,7 @@ const LegalServices = () => {
         </section>
 
         <div className="py-20">
-          <section className="bg-gray-100 dark:bg-green-950">
+          <section id="legal-question" className="bg-gray-100 dark:bg-green-950">
             <div className="py-12 px-4 mx-auto max-w-screen-xl text-center">
               <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
                 Have a Legal Question? Get Answers from a Legal Professional
