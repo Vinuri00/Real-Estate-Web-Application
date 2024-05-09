@@ -1,7 +1,7 @@
 export const validateBooking = (req, res, next) => {
-  const { fullName, contactNumber, nicNumber, email, propertyType } = req.body;
+  const { fullName, contactNumber, nicNumber, email, propertyType, date } = req.body;
 
-  if (!fullName || !contactNumber || !nicNumber || !email || !propertyType) {
+  if (!fullName || !contactNumber || !nicNumber || !email || !propertyType || !date) {
     return res.status(400).json({ message: "Please enter all fields" });
   }
 
@@ -24,6 +24,10 @@ export const validateBooking = (req, res, next) => {
 
   if (!propertyType) {
     return res.status(400).json({ message: "Please enter your property type" });
+  }
+
+  if (!date || isNaN(Date.parse(date))) {
+    return res.status(400).json({ message: "Invalid date" });
   }
 
   next();
