@@ -1,7 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios, { CREATE_ADVERTISEMENTS } from "../api/axios";
 
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 const AdvertisementForm = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = Cookies.get("token");
+
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    /* const validateToken = async () => {
+      try {
+        const res = await axios.get(ADMIN_PROTECTED_URL, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.statusText) throw new Error("Not Authorized");
+      } catch (error) {
+        console.error(error);
+        navigate("/auth/sign-in");
+      }
+    };
+
+    validateToken(); */
+  }, []);
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
