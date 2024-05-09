@@ -16,7 +16,8 @@ bookLawyerRoute.post("/add-booking", validateBooking, async (req, res) => {
     contactNumber, 
     nicNumber, 
     email, 
-    propertyType 
+    propertyType ,
+    date,
   } = req.body;
 
   await connection();
@@ -29,6 +30,7 @@ bookLawyerRoute.post("/add-booking", validateBooking, async (req, res) => {
       nicNumber,
       email,
       propertyType,
+      date,
     });
 
     await booking.save();
@@ -78,7 +80,7 @@ bookLawyerRoute.get("/get-one/:id", async (req, res) => {
 
 bookLawyerRoute.put("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const { fullName, contactNumber, nicNumber, email, propertyType } = req.body;
+  const { fullName, contactNumber, nicNumber, email, propertyType, date } = req.body;
 
   await connection();
 
@@ -89,6 +91,7 @@ bookLawyerRoute.put("/update/:id", async (req, res) => {
         nicNumber,
         email,
         propertyType,
+        date,
     });
 
     if (!booking) {
