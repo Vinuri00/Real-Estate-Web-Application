@@ -15,6 +15,7 @@ const BookingLawyer = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [lawyer, setLawyers] = useState();
 
+
   const { lawyerId } = params;
 
   useEffect(() => {
