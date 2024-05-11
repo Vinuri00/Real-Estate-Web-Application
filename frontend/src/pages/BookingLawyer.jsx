@@ -59,7 +59,7 @@ const BookingLawyer = () => {
   console.log(lawyer);
 
   return (
-    <div className="flex justify-center items-center h-screen -mt-5">
+    <div className="flex justify-center items-center h-screen mt-5">
       <div className="bg-white p-8 rounded shadow-2xl w-1/2">
         <h2 className="text-2xl font-bold text-center">Book A Lawyer</h2>
 
@@ -170,12 +170,13 @@ const BookingLawyer = () => {
           </div>
 
           <div className="flex justify-center">
-            <button
+            <a
+              href="/paypal"
               type="submit"
               className="w-full md:w-9/10 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded mt-8"
             >
               Book Now
-            </button>
+            </a>
           </div>
         </form>
       </div>
