@@ -13,23 +13,6 @@ const AdvertisementForm = () => {
       navigate("/login");
       return;
     }
-
-    /* const validateToken = async () => {
-      try {
-        const res = await axios.get(ADMIN_PROTECTED_URL, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!res.statusText) throw new Error("Not Authorized");
-      } catch (error) {
-        console.error(error);
-        navigate("/auth/sign-in");
-      }
-    };
-
-    validateToken(); */
   }, []);
 
   const [formData, setFormData] = useState({
