@@ -90,4 +90,15 @@ userRouter.post("/login", validateUserLogin, async (req, res) => {
   }
 });
 
+userRouter.get("/get-all", async (req, res) => {
+  await connection();
+
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 export default userRouter;
