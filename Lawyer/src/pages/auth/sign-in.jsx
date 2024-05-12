@@ -1,10 +1,9 @@
 import { Input, Button, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "@/api/axios";
+import axios, { LAWYER_LOGIN } from "@/api/axios";
 import { jwtDecode } from "jwt-decode";
 import Swal from "sweetalert2";
-import { LOGIN_URL } from "@/api/axios";
 import { validateLogin } from "@/validations/login";
 
 
@@ -20,8 +19,8 @@ export function SignIn() {
 
     try {
       const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ username: userName, password }),
+        LAWYER_LOGIN,
+        JSON.stringify({ userName, password }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -30,7 +29,7 @@ export function SignIn() {
 
       console.log(response);
 
-      if (!response.statusText) throw new Error("Admin Login Failed");
+      if (!response.statusText) throw new Error("Lawyer Login Failed");
 
       const { token } = await response.data;
       document.cookie = `token=${token}; path=/`;
@@ -38,8 +37,8 @@ export function SignIn() {
       const decodedToken = jwtDecode(token);
 
       Swal.fire({
-        title: "GreenLands Admin Panel",
-        text: `Welcome back Admin ${decodedToken.adminName}!`,
+        title: "GreenLands Lawyer Panel",
+        text: `Welcome back Lawyer ${decodedToken.lawyerName}!`,
         icon: "success",
       }).then(() => {
         navigate("/dashboard/home");
@@ -54,7 +53,7 @@ export function SignIn() {
       <div className="mt-48 w-full lg:w-3/5">
         <div className="text-center">
           <Typography variant="h2" className="mb-4 font-bold">
-            Admin Sign In
+            Lawyer Sign In
           </Typography>
           <Typography
             variant="paragraph"
