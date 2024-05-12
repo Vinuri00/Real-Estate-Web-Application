@@ -32,14 +32,14 @@ const Home = () => {
           </p>
 
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <a href="/LaweyerDetails">
+            <a href="/broker">
               <button className="bg-green-600 rounded-lg p-4 text-white font-bold flex items-center ">
-                View Lawyers
+                Brokerage Details
               </button>
             </a>
-            <a href="/broker">
+            <a href="/LaweyerDetails">
               <button className="bg-green-600 rounded-lg p-4 text-white font-bold flex items-center ml-4">
-                Brokerage Details
+                View Lawyers
               </button>
             </a>
           </div>
