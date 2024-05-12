@@ -1,7 +1,8 @@
 import connection from "../Database/conn.js";
 import BookLawyer from "../Models/booklawyer.js";
 import express from "express";
-import dotenv from "dotenv";import { validateBooking } from "../Middlewares/bookLawyerValidation.js";
+import dotenv from "dotenv";
+import { validateBooking } from "../Middlewares/bookLawyerValidation.js";
 import mongoose from "mongoose";
 
 dotenv.config();
@@ -11,24 +12,16 @@ const bookLawyerRoute = express.Router();
 // create a new booking
 
 bookLawyerRoute.post("/add-booking", validateBooking, async (req, res) => {
-  const { 
-    fullName, 
-    contactNumber, 
-    nicNumber, 
-    email, 
-    propertyType ,
-    date,
-  } = req.body;
+  const { userId, lawyerId, userNICNumber, propertyType, date } = req.body;
 
   await connection();
 
   // create booking
   try {
     const booking = new BookLawyer({
-      fullName,
-      contactNumber,
-      nicNumber,
-      email,
+      userId,
+      lawyerId,
+      userNICNumber,
       propertyType,
       date,
     });
@@ -51,7 +44,9 @@ bookLawyerRoute.get("/get-all", async (req, res) => {
   await connection();
 
   try {
-    const booking = await BookLawyer.find();
+    const booking = await BookLawyer.find()
+      .populate("userId")
+      .populate("lawyerId");
     res.status(200).json(booking);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -60,13 +55,16 @@ bookLawyerRoute.get("/get-all", async (req, res) => {
 
 // Get one booking according to the ID
 
-bookLawyerRoute.get("/get-one/:id", async (req, res) => {
-  const { id } = req.params;
+bookLawyerRoute.get("/get-one/:lawyerId", async (req, res) => {
+  const { lawyerId } = req.params;
 
   await connection();
 
   try {
-    const booking = await BookLawyer.findById(id);
+    const booking = await BookLawyer.find({ lawyerId })
+      .populate("userId")
+      .populate("lawyerId");
+      
     if (!booking) {
       return res.status(400).json({ message: "Booking is not found" });
     }
@@ -80,18 +78,19 @@ bookLawyerRoute.get("/get-one/:id", async (req, res) => {
 
 bookLawyerRoute.put("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const { fullName, contactNumber, nicNumber, email, propertyType, date } = req.body;
+  const { fullName, contactNumber, nicNumber, email, propertyType, date } =
+    req.body;
 
   await connection();
 
   try {
     const booking = await BookLawyer.findByIdAndUpdate(id, {
-        fullName,
-        contactNumber,
-        nicNumber,
-        email,
-        propertyType,
-        date,
+      fullName,
+      contactNumber,
+      nicNumber,
+      email,
+      propertyType,
+      date,
     });
 
     if (!booking) {

@@ -10,14 +10,14 @@ import advertisementRouter from "./Routes/advertisements.js";
 import bookLawyerRoute from "./Routes/bookLawyer.js";
 import userRouter from "./Routes/users.js";
 
-
 dotenv.config();
 
 const app = express();
 const corsData = {
   origin: [
-    "http://localhost:5173", 
+    "http://localhost:5173",
     "http://localhost:5000",
+    "http://localhost:8000",
     "http://159.223.75.67:5000",
     "http://159.223.75.67:5173",
   ],
