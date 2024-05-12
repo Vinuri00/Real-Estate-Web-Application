@@ -1,9 +1,18 @@
-import { useState } from "react";
-// import blocklandbg from "../assets/images/blocklandbg.webp";
+import { useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Home = () => {
   const [showLawyers, setShowLawyers] = useState(false);
   const [showBrokers, setShowBrokers] = useState(false);
+  const [advertisements, setAdvertisements] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/advertisements/get-all")
+      .then((response) => response.json())
+      .then((data) => setAdvertisements(data.slice(0, 3)))
+      .catch((error) => console.error("Error fetching advertisements", error));
+  }, []);
 
   return (
     <div>
@@ -44,235 +53,85 @@ const Home = () => {
       </section>
 
       <div className="container mx-auto px-10 pt-10">
-        {/* <h2 className="text-3xl font-semibold text-gray-800 mb-8">Sections</h2> */}
-
-        {/* Lawyer Services Section */}
-        {showLawyers && (
-          <div className="mb-8">
-            {" "}
-            {/* Add margin-bottom for spacing */}
-            <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
-              <u> Lawyer Services Section </u>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
-              {/* Section Card 1 - Lawyer Service */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <img
-                  className="w-full h-48 object-cover object-center"
-                  src="https://via.placeholder.com/300x200"
-                  alt="Lawyer Service"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Lawyer Service
-                  </h3>
-                  <p className="text-gray-600">Details about lawyer service.</p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <img
-                  className="w-full h-48 object-cover object-center"
-                  src="https://via.placeholder.com/300x200"
-                  alt="Lawyer Service"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Lawyer Service
-                  </h3>
-                  <p className="text-gray-600">Details about lawyer service.</p>
-                </div>
-              </div>
-              {/* New Services */}
-            </div>
-          </div>
-        )}
-
-        {/* Brokerage Services Section */}
-        {showBrokers && (
-          <div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4 pt-12 text-center">
-              <u> Brokerage Services Section </u>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
-              {/* Section Card 2 - Brokerage Service */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <img
-                  className="w-full h-48 object-cover object-center"
-                  src="https://via.placeholder.com/300x200"
-                  alt="Brokerage Service"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Brokerage Service
-                  </h3>
-                  <p className="text-gray-600">
-                    Details about brokerage service.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <img
-                  className="w-full h-48 object-cover object-center"
-                  src="https://via.placeholder.com/300x200"
-                  alt="Brokerage Service"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Brokerage Service
-                  </h3>
-                  <p className="text-gray-600">
-                    Details about brokerage service.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg overflow-hidden shadow-md">
-                <img
-                  className="w-full h-48 object-cover object-center"
-                  src="https://via.placeholder.com/300x200"
-                  alt="Brokerage Service"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Brokerage Service
-                  </h3>
-                  <p className="text-gray-600">
-                    Details about brokerage service.
-                  </p>
-                </div>
-              </div>
-              {/* New Services */}
-            </div>
-          </div>
-        )}
-
-        {/* Featured Properties column-1 */}
-
+        {/* Featured Properties Section */}
         <h3 className="text-xl font-bold text-gray-800 mb-4 pt-14 text-center">
           <u> Featured Property </u>
         </h3>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
-          {/* Section Card 1 - Featured Property Service */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
+          {advertisements.map((advertisement) => (
+            <div
+              key={advertisement._id}
+              className="bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <Carousel
+                arrowColor="black"
+                dotColor="black"
+                showStatus={false}
+                className="overflow-hidden rounded-t-lg"
+                showThumbs={false}
+              >
+                {advertisement.images.map((image, index) => (
+                  <a href="#" key={index}>
+                    <img
+                      className="rounded-t-lg object-cover w-full h-64"
+                      src={image}
+                      alt=""
+                    />
+                  </a>
+                ))}
+              </Carousel>
 
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
+              <div className="p-4">
+                <a href="#">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    {advertisement.title}
+                  </h3>
+                </a>
 
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
+                <p className="text-gray-600">{advertisement.description}</p>
 
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
-          {/* New Services */}
-        </div>
+                <div className="text-sm text-black dark:text-black mt-2">
+                  Owner Name: {advertisement.ownerName}
+                </div>
 
-        {/* Featured Properties column-2 */}
+                <div className="text-sm text-black dark:text-black mt-2">
+                  Contact Number: {advertisement.contactNumber}
+                </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-16">
-          {/* Section Card 1 - Featured Property Service */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
+                <div className="text-sm text-black dark:text-black mt-2">
+                  Price: {advertisement.price}
+                </div>
 
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
+                <div className="text-sm text-black dark:text-black mt-2">
+                  Location: {advertisement.location}
+                </div>
 
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
+                <div className="flex justify-center pt-5">
+                  <a
+                    href="#"
+                    className="inline-flex items-center px-3 py-2 font-medium text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                  >
+                    Read more
+                    <svg
+                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img
-              className="w-full h-48 object-cover object-center"
-              src="https://via.placeholder.com/300x200"
-              alt="Lawyer Service"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Featured Property
-              </h3>
-              <p className="text-gray-600">Details about lawyer service.</p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Process of buying Properties at our auction */}
