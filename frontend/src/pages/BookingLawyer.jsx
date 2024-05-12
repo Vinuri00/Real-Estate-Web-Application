@@ -172,12 +172,13 @@ const BookingLawyer = () => {
           </div>
 
           <div className="flex justify-center">
-            <button
+            <a
+              href="/checkout"
               type="submit"
               className="w-full md:w-9/10 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded mt-8"
             >
               Book Now
-            </button>
+            </a>
           </div>
         </form>
       </div>
