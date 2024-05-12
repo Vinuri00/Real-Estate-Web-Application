@@ -6,11 +6,10 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home } from "@/pages/dashboard";
 import { SignIn } from "@/pages/auth";
-import Brokers from "./pages/dashboard/Broker"; // Brokers
+import Bookings from "./pages/dashboard/Broker"; // Brokers
 import AddBroker from "./pages/dashboard/AddBroker"; // Add Broker
 import UpdateBroker from "./pages/dashboard/UpdateBroker"; // Update Broker
-import LawyerComponent from "./pages/dashboard/Lawyer"; // Lawyers
-import AdvertisementComponent from "./pages/dashboard/Advertisement"; // Advertisement
+import VideoCall from "./pages/dashboard/VideoCall";
 
 
 const icon = {
@@ -22,34 +21,18 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
-        name: "dashboard",
-        path: "/home",
-        element: <Home />,
+        // Manage Brokers
+        icon: <UserGroupIcon {...icon} />,
+        name: "Manage Bookings",
+        path: "/bookings",
+        element: <Bookings />,
       },
-      
       {
         // Manage Brokers
         icon: <UserGroupIcon {...icon} />,
-        name: "Manage Brokers",
-        path: "/brokers",
-        element: <Brokers />,
-      },
-
-      {
-        // Manage Lawyers
-        icon: <AcademicCapIcon {...icon} />,
-        name: "Manage Lawyers",
-        path: "/lawyers",
-        element: <LawyerComponent />,
-      },
-
-      {
-        // Manage Advertisements
-        icon: <ServerStackIcon {...icon} />,
-        name: "Manage Advertisements",
-        path: "/advertisements",
-        element: <AdvertisementComponent />,
+        name: "Video Conferencing",
+        path: "/video-call",
+        element: <VideoCall />,
       },
     ],
   },
