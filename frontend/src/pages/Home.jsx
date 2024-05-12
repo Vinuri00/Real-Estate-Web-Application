@@ -3,8 +3,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Home = () => {
-  const [showLawyers, setShowLawyers] = useState(false);
-  const [showBrokers, setShowBrokers] = useState(false);
+  // const [showLawyers, setShowLawyers] = useState(false);
+  // const [showBrokers, setShowBrokers] = useState(false);
   const [advertisements, setAdvertisements] = useState([]);
 
   useEffect(() => {
@@ -32,6 +32,19 @@ const Home = () => {
           </p>
 
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+            <a href="/LaweyerDetails">
+              <button className="bg-green-600 rounded-lg p-4 text-white font-bold flex items-center ">
+                View Lawyers
+              </button>
+            </a>
+            <a href="/broker">
+              <button className="bg-green-600 rounded-lg p-4 text-white font-bold flex items-center ml-4">
+                Brokerage Details
+              </button>
+            </a>
+          </div>
+
+          {/* <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             <button
               className={`bg-green-600 rounded-lg p-4 text-white font-bold flex items-center ${
                 showLawyers ? "bg-green-700" : ""
@@ -48,7 +61,7 @@ const Home = () => {
             >
               Brokerage Details
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
 
