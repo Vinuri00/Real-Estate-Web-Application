@@ -28,6 +28,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
             layout === "dashboard" && (
               <ul key={key} className="mb-4 flex flex-col gap-1">
                 {pages.map(({ icon, name, path }) => (
+                  
                   <li key={name}>
                     <NavLink to={`/${layout}${path}`}>
                       {({ isActive }) => (
