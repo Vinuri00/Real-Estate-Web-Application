@@ -42,7 +42,7 @@ export function Dashboard() {
 
   const handleLogout = async () => {
     Swal.fire({
-      title: "Hotel Room Booking System",
+      title: "GreenLands Admin Panel",
       text: "Are you sure want to Logout?",
       icon: "warning",
       showCancelButton: true,
@@ -54,7 +54,7 @@ export function Dashboard() {
         Cookies.remove("token");
 
         Swal.fire({
-          title: "Hotel Room Booking System",
+          title: "GreenLands Admin Panel",
           text: "Logged Out!",
           icon: "success",
         }).then(() => {
