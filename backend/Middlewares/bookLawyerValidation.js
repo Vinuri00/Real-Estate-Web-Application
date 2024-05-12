@@ -1,29 +1,24 @@
 export const validateBooking = (req, res, next) => {
-  const { fullName, contactNumber, nicNumber, email, propertyType, date } = req.body;
+  const { userId, lawyerId, userNICNumber, propertyType, date } = req.body;
 
-  if (!fullName || !contactNumber || !nicNumber || !email || !propertyType || !date) {
+  if (!userId || !lawyerId || !userNICNumber || !propertyType || !date) {
     return res.status(400).json({ message: "Please enter all fields" });
   }
 
-  
-  if (!fullName) {
-    return res.status(400).json({ message: "Please enter Broker Name" });
+  if (!userId) {
+    return res.status(400).json({ message: "Please enter userId" });
   }
 
-  if (!contactNumber) {
-    return res.status(400).json({ message: "Please enter Contact Number" });
-  }
-  
-  if (!nicNumber) {
-    return res.status(400).json({ message: "Please enter NIC Number" });
+  if (!lawyerId) {
+    return res.status(400).json({ message: "Please enter lawyerId" });
   }
 
-  if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
-    return res.status(400).json({ message: "Invalid email" });
+  if (!userNICNumber) {
+    return res.status(400).json({ message: "Please enter userNICNumber" });
   }
 
   if (!propertyType) {
-    return res.status(400).json({ message: "Please enter your property type" });
+    return res.status(400).json({ message: "Please enter your propertyType" });
   }
 
   if (!date || isNaN(Date.parse(date))) {
