@@ -125,19 +125,22 @@ const AdvertisementForm = () => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
-      // Optionally, reset the form fields after successful submission
-      setFormData({
-        title: "",
-        description: "",
-        ownerName: "",
-        contactNumber: "",
-        price: "",
-        location: "",
-        images: [],
-      });
-      setSuccessMessage("Advertisement created successfully");
+      if (response.status === 201) {
+        setSuccessMessage("Advertisement created successfully");
+        setFormData({
+          title: "",
+          description: "",
+          ownerName: "",
+          contactNumber: "",
+          price: "",
+          location: "",
+          images: [],
+        });
+      } else {
+        setErrorMessage("Failed to create advertisement");
+      }
     } catch (error) {
+      setErrorMessage("An error occurred while creating the advertisement");
       console.error(error);
     }
   };
