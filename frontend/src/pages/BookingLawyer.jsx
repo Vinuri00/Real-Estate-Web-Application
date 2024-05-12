@@ -53,7 +53,9 @@ const BookingLawyer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    // console.log(fullname, contactnumber, nicnumber, email, propertytype, selectedDate, lawyer)
+    
   };
 
   console.log(lawyer);
@@ -171,7 +173,6 @@ const BookingLawyer = () => {
 
           <div className="flex justify-center">
             <button
-              onClick={() => navigate("/checkout")}
               type="submit"
               className="w-full md:w-9/10 bg-green-600 hover:bg-green-900 text-white px-4 py-1.5 rounded mt-8"
             >
