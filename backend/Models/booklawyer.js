@@ -1,45 +1,33 @@
 import pkg from "mongoose";
-const { Schema, model, models } = pkg;
-import bcrypt from "bcrypt";
-import mongooseUniqueValidator from "mongoose-unique-validator";
+const { Schema, model, models, Types } = pkg;
 
 const BookLawyerSchema = new Schema({
-  fullName: {
-    type: String,
-    required: [true, "Please enter Full Name"],
+  userId: {
+    type: Types.ObjectId,
+    ref: "User",
+    required: [true, "Please enter user"],
   },
 
-  contactNumber: {
-    type: String,
-    required: [true, "Please enter Contact Number"],
-    unique: true,
+  lawyerId: {
+    type: Types.ObjectId,
+    ref: "Lawyers",
+    required: [true, "Please enter lawyer"],
   },
 
-  nicNumber: {
+  userNICNumber: {
     type: String,
-    required: [true, "Please enter Address"],
-  },
-
-  email: {
-    type: String,
-    required: [true, "Please enter Address"],
+    required: [true, "Please enter userNICNumber"],
   },
 
   propertyType: {
     type: String,
-    required: [true, "Please enter City"],
+    required: [true, "Please enter propertyType"],
   },
 
   date: {
     type: Date,
     required: true,
   },
-  
-});
-
-// Validate the email and contact number
-BookLawyerSchema.plugin(mongooseUniqueValidator, {
-  message: "Email or Contact Number already exists. Duplicate key",
 });
 
 const BookLawyer = models.BookLawyer || model("BookLawyer", BookLawyerSchema);
