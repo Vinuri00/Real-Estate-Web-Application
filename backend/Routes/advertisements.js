@@ -87,10 +87,6 @@ advertisementRouter.put(
     const { id } = req.params;
     console.log("Updating advertisement with ID:", id);
 
-    if (!mongoose.Types.isValid(id)) {
-      return res.status(400).json({ message: "Invalid advertisement ID" });
-    }
-
     const {
       title,
       description,
