@@ -63,6 +63,19 @@ advertisementRouter.get("/get-all", async (req, res) => {
   }
 });
 
+advertisementRouter.get("/get-all-approved", async (req, res) => {
+  await connection();
+
+  try {
+    const advertisements = await Advertisement.find({ status: 1 });
+    res.status(200).json(advertisements);
+  } catch (error) {
+    // res.status(400).json({ message: error.message });
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 // Get advertisement by id
 advertisementRouter.get("/:id", async (req, res) => {
   const { id } = req.params;
