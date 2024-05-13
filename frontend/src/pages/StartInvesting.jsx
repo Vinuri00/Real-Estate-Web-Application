@@ -6,11 +6,13 @@ const StartInvesting = () => {
   const [advertisements, setAdvertisement] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/advertisements/get-all")
+    fetch("http://localhost:3000/advertisements/get-all-approved")
       .then((response) => response.json())
       .then((data) => setAdvertisement(data))
       .catch((error) => console.error("Error fetching advertisements", error));
   }, []);
+
+  console.log(advertisements)
 
   return (
     <>
