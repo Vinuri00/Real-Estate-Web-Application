@@ -45,6 +45,7 @@ const AdvertisementComponent = () => {
       if (result.isConfirmed) {
         const res = await axios.put(
           `${APPROVE_ADVERTISEMENT}/${advertisementId}`
+
         )
 
         if (res.status !== 200) {
